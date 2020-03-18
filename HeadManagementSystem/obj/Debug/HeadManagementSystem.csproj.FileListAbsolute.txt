@@ -1,0 +1,234 @@
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\ApplicationInsights.config
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\HeadManagementSystem.dll.config
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\HeadManagementSystem.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\HeadManagementSystem.pdb
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\csc.exe
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\csc.exe.config
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\csc.rsp
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\csi.exe
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\csi.rsp
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\System.AppContext.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\System.Collections.Immutable.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\System.IO.FileSystem.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\System.Reflection.Metadata.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\vbc.exe
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\vbc.exe.config
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\vbc.rsp
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\VBCSCompiler.exe
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\roslyn\VBCSCompiler.exe.config
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Antlr3.Runtime.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AI.DependencyCollector.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AI.Web.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AI.WindowsServer.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.ApplicationInsights.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.Web.Infrastructure.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Newtonsoft.Json.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\QRCoder.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Diagnostics.DiagnosticSource.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Net.Http.Formatting.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Helpers.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Http.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Http.WebHost.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Mvc.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Optimization.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Razor.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.WebPages.Deployment.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.WebPages.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.WebPages.Razor.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\WebGrease.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Helpers.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Mvc.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Optimization.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Razor.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.WebPages.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.WebPages.Deployment.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.WebPages.Razor.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Newtonsoft.Json.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Antlr3.Runtime.pdb
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Net.Http.Formatting.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Http.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Web.Http.WebHost.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\System.Diagnostics.DiagnosticSource.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AI.DependencyCollector.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AI.WindowsServer.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.AI.Web.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\obj\Debug\HeadManagementSystem.csprojAssemblyReference.cache
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\obj\Debug\HeadManagementSystem.csproj.CoreCompileInputs.cache
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\obj\Debug\HeadManagementSystem.csproj.CopyComplete
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\obj\Debug\HeadManagementSystem.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\HeadManagementSystem\obj\Debug\HeadManagementSystem.pdb
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\ApplicationInsights.config
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\HeadManagementSystem.dll.config
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\HeadManagementSystem.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\HeadManagementSystem.pdb
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\csc.exe
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\csc.exe.config
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\csc.rsp
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\csi.exe
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\csi.rsp
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\System.AppContext.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\System.Collections.Immutable.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\System.IO.FileSystem.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\System.Reflection.Metadata.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\vbc.exe
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\vbc.exe.config
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\vbc.rsp
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\VBCSCompiler.exe
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\roslyn\VBCSCompiler.exe.config
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Antlr3.Runtime.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AI.DependencyCollector.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AI.Web.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AI.WindowsServer.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.ApplicationInsights.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.Web.Infrastructure.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Newtonsoft.Json.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\QRCoder.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Diagnostics.DiagnosticSource.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Net.Http.Formatting.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Helpers.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Http.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Http.WebHost.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Mvc.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Optimization.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Razor.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.WebPages.Deployment.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.WebPages.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.WebPages.Razor.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\WebGrease.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Helpers.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Mvc.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Optimization.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Razor.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.WebPages.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.WebPages.Deployment.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.WebPages.Razor.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Newtonsoft.Json.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Antlr3.Runtime.pdb
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Net.Http.Formatting.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Http.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Web.Http.WebHost.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\System.Diagnostics.DiagnosticSource.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AI.DependencyCollector.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AI.WindowsServer.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.AI.Web.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\obj\Debug\HeadManagementSystem.csprojAssemblyReference.cache
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\obj\Debug\HeadManagementSystem.csproj.CoreCompileInputs.cache
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\obj\Debug\HeadManagementSystem.csproj.CopyComplete
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\obj\Debug\HeadManagementSystem.dll
+E:\Hai_GPRO\Git HMS\HeadManagementSystem\obj\Debug\HeadManagementSystem.pdb
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\ApplicationInsights.config
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\HeadManagementSystem.dll.config
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\HeadManagementSystem.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\HeadManagementSystem.pdb
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\csc.exe
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\csc.exe.config
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\csc.rsp
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\csi.exe
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\csi.rsp
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\System.AppContext.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\System.Collections.Immutable.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\System.IO.FileSystem.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\System.Reflection.Metadata.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\vbc.exe
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\vbc.exe.config
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\vbc.rsp
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\VBCSCompiler.exe
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\roslyn\VBCSCompiler.exe.config
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Antlr3.Runtime.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AI.DependencyCollector.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AI.Web.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AI.WindowsServer.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.ApplicationInsights.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.Web.Infrastructure.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Newtonsoft.Json.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\QRCoder.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Diagnostics.DiagnosticSource.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Net.Http.Formatting.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Helpers.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Http.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Http.WebHost.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Mvc.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Optimization.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Razor.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.WebPages.Deployment.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.WebPages.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.WebPages.Razor.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\WebGrease.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Helpers.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Mvc.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Optimization.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Razor.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.WebPages.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.WebPages.Deployment.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.WebPages.Razor.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Newtonsoft.Json.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Antlr3.Runtime.pdb
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Net.Http.Formatting.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Http.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Web.Http.WebHost.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\System.Diagnostics.DiagnosticSource.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AI.DependencyCollector.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AI.WindowsServer.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.AI.Web.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\obj\Debug\HeadManagementSystem.csprojAssemblyReference.cache
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\obj\Debug\HeadManagementSystem.csproj.CoreCompileInputs.cache
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\obj\Debug\HeadManagementSystem.csproj.CopyComplete
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\obj\Debug\HeadManagementSystem.dll
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\obj\Debug\HeadManagementSystem.pdb
