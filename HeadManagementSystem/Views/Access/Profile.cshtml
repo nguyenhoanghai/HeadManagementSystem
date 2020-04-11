@@ -1,0 +1,241 @@
+﻿@model HMS.Data.Model.AccountModel
+@{
+    ViewBag.Title = "Thông tin tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="header bg-teal">
+        <div class="row clearfix">
+            <div class="col-xs-12 col-sm-6">
+                <h2>THÔNG TIN TÀI KHOẢN</h2>
+            </div>
+        </div>
+    </div>
+    <div class="body clearfix ">
+        <div class="col-xs-12 col-sm-3">
+            <div class="card profile-card">
+                <div class="profile-header">&nbsp;</div>
+                <div class="profile-body">
+                    <div class="image-area">
+                        <img src="/UploadedFiles/@Model.Avatar" alt="@Model.HoTen - ảnh đại diện" style="width:135px; height:135px">
+                    </div>
+                    <div class="content-area">
+                        <h3 class=" upper-text">@Model.HoTen</h3>
+                        <p>@Model.DienThoai</p>
+                        <p>@Model.ChucVu</p>
+                    </div>
+                </div>
+                <div class="profile-footer"> 
+                    <input type="file" id="fileUp" class="hide" />
+                    <button class="btn btn-primary btn-lg waves-effect btn-block up-anh upper-text">Đổi ảnh đại diện</button>
+                  <span class="err-msg up-err"></span>
+                </div>
+            </div>            
+        </div>
+        <div class="col-xs-12 col-sm-9">
+            <div class="card">
+                <div class="body">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab" aria-expanded="true">Thông tin nhân viên</a></li>
+                            <li role="presentation" class=""><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab" aria-expanded="false">Đổi mật khẩu</a></li>
+                        </ul>
+                        <div class="tab-content">                            
+                            <div role="tabpanel" class="tab-pane fade active in" id="profile_settings">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="HoTen" class="col-sm-2 control-label">Họ tên</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-line ">
+                                                 @Html.EditorFor(m => m.HoTen, new { htmlAttributes = new { @id = "name", @required = "", @class = "form-control", @placeholder = "Họ tên nhân viên" } })
+                                                @Html.ValidationMessageFor(x => x.HoTen)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DienThoai" class="col-sm-2 control-label">Điện thoại</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-line ">
+                                                 @Html.EditorFor(m => m.DienThoai, new { htmlAttributes = new { @id = "phone", @required = "", @class = "form-control", @placeholder = "Số điện thoại nhân viên" } })
+                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DiaChi" class="col-sm-2 control-label">Địa chỉ</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-line ">
+                                                  @Html.EditorFor(m => m.DiaChi, new { htmlAttributes = new { @id = "address",  @class = "form-control", @placeholder = "Địa chỉ nhân viên" } })
+                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Note" class="col-sm-2 control-label">Khác</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-line ">
+                                                  @Html.EditorFor(m => m.Note, new { htmlAttributes = new { @id = "note",   @class = "form-control", @placeholder = "Thông tin khác" } })
+                                              </div>
+                                        </div>
+                                    </div> 
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="button" class="btn btn-danger upper-text change-info">Cập nhật</button>
+                                            <div style="padding-top:10px" class="err-changeinfo err-msg"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="change_password_settings">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="OldPassword" class="col-sm-3 control-label">Mật khẩu cũ</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-line">
+                                                <input type="password" class="form-control" id="OldPassword" name="OldPassword" placeholder="Mật khẩu cũ" required="">
+                                            </div>
+                                            <span class="err-oldpass err-msg"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="NewPassword" class="col-sm-3 control-label">Mật khẩu mới</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-line">
+                                                <input type="password" class="form-control" id="NewPassword" name="NewPassword" placeholder="Mật khẩu mới" required="">
+                                            </div>
+                                            <span class="err-newpass err-msg"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="NewPasswordConfirm" class="col-sm-3 control-label">Mật khẩu mới (xác nhận)</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-line">
+                                                <input type="password" class="form-control" id="NewPasswordConfirm" name="NewPasswordConfirm" placeholder="Mật khẩu mới (xác nhận)" required="">
+                                            </div>
+                                            <span class="err-newpass-cf err-msg"></span>
+                                        </div>
+                                    </div> 
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-sm-9">
+                                            <button type="button" class="btn btn-danger upper-text change-pass">Đổi mật khẩu</button>
+                                            <div style="padding-top:10px" class="err-changepass err-msg"></div>
+                                        </div>                                       
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.up-anh').click(function () {
+        $('#fileUp').click();
+    });
+
+    $("#fileUp").change(function () {
+        var data = new FormData();
+        var files = $("#fileUp").get(0).files;
+        if (files.length > 0) {
+            data.append("HelpSectionImages", files[0]);
+            data.append("userid", @Model.UserId);
+        }
+        $.ajax({
+            url: "/Access/UploadFiles",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (res) { 
+                if (res == '0')
+                    $('.up-err').html('Cập nhật ảnh thất bại');
+                else
+                    window.location.href='/Access/profile';
+            },
+            error: function (er) {
+                $('.up-err').html('Cập nhật ảnh thất bại');
+            } 
+        });
+    });
+
+    $('.change-pass').click(function () {
+        var isValid = true;
+        $('.err-oldpass,.err-newpass,.err-newpass-cf,.err-changepass').html('');
+        if ($('#OldPassword').val() == '') {
+            isValid = false;
+            $('.err-oldpass').html('Trường bắt buộc.');
+        } 
+        if ($('#NewPassword').val() == '') {
+            isValid = false;
+            $('.err-newpass').html('Trường bắt buộc.');
+        } 
+        if ($('#NewPasswordConfirm').val() == '') {
+            isValid = false;
+            $('.err-newpass-cf').html('Trường bắt buộc.');
+        }
+        if ($('#NewPassword').val() != $('#NewPasswordConfirm').val() ) {
+            isValid = false;
+            $('.err-newpass-cf').html('Xác nhận mật khẩu không khớp.');
+        }
+        if (isValid) {
+            var data = new FormData();
+            data.append("oldPass", $('#OldPassword').val());
+            data.append("newPass", $('#NewPassword').val());
+            data.append("newPassCf", $('#NewPasswordConfirm').val()); 
+            $.ajax({
+                url: "/Access/UpdatePassword",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (res) {
+                    $('.err-changepass').html('');
+                    if (!res.isValid)  
+                        $('.err-changepass').html(res.sms);  
+                    else
+                        window.location.href = res.url;
+                },
+                error: function (er) {
+                    $('.err-changepass').html('Cập nhật thông tin thất bại');
+                }
+            });
+
+        }
+    });
+
+    $('.change-info').click(function () {
+        var isValid = true;
+        $('.err-name,.err-phone,.err-add,.err-note').html('');
+        if ($('#name').val() == '') {
+            isValid = false;
+            $('.err-name').html('Trường bắt buộc.');
+        } 
+        if (isValid) {
+            var data = new FormData();
+            data.append("name", $('#name').val());
+            data.append("phone", $('#phone').val());
+            data.append("address", $('#address').val());
+            data.append("note", $('#note').val());
+            $.ajax({
+                url: "/Access/UpdateInfo",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (res) {
+                    $('.err-changeinfo').html('');
+                    if (!res.isValid)
+                        $('.err-changeinfo').html(res.sms);
+                    else
+                        window.location.href = res.url;
+                },
+                error: function (er) {
+                    $('.err-changeinfo').html('Cập nhật thông tin thất bại');
+                }
+            });
+
+        }
+    });
+</script>
+

@@ -1,0 +1,126 @@
+﻿@using HMS.Data.Model
+@{
+    ViewBag.Title = "Dịch vụ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var loaiCVs = (List<ModelSelectItem>)ViewBag.loaiCVs;
+    var congViecs = (List<ModelSelectItem>)ViewBag.congViecs;
+}
+<div class="card">
+    <div class="header bg-teal">
+        <div class="row clearfix">
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="upper-text">danh mục dịch vụ</h2>
+            </div>
+        </div>
+    </div>
+    <div class="body clearfix ">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 m-b-10 padding-0">
+            <div class="add-box-title">Thông tin dịch vụ</div>
+            <div class="add-box-body masked-input">
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <select class="form-control show-tick" data-live-search="true" id="loai-cv" title="Chọn loại công việc">
+                                <option value=""></option>
+                                @if (loaiCVs != null)
+                                {
+                                    for (int i = 0; i < loaiCVs.Count; i++)
+                                    {
+                                        <option value="@loaiCVs[i].Id">@loaiCVs[i].Name</option>
+                                    }
+                                }
+                            </select>
+                            <label class="form-label">Loại công việc</label>
+                        </div>
+                        <div class="err-loaicv"></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <select class="form-control show-tick" data-live-search="true" id="congviec" title="Chọn công việc">
+                                <option value=""></option>
+                                @if (congViecs != null)
+                                {
+                                    for (int i = 0; i < congViecs.Count; i++)
+                                    {
+                                        <option value="@congViecs[i].Id">@congViecs[i].Name</option>
+                                    }
+                                }
+                            </select>
+                            <label class="form-label">Công việc</label>
+                        </div>
+                        <div class="err-congviec"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line focused">
+                            <input type="text" class="form-control time24" id="tgxl"  value="00:00" />
+                            <label class="form-label">Thời gian xử lý</label>
+                        </div>
+                        <div class="err-tgxl"></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="number" class="form-control  " id="giamua" value="0" />
+                            <label class="form-label">Giá dịch vụ</label>
+                        </div>
+                        <div class="err-giamua"></div>
+                    </div>
+                </div> 
+
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <textarea rows="1" class="form-control no-resize auto-growth" id="note"></textarea>
+                            <label class="form-label">Ghi chú</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
+                    <button class="btn btn-danger m-b-5 m-t-5" id="btAdd"><i class="fa fa-plus-circle"></i> Thêm mới</button>
+                    <button class="btn btn-primary m-b-5 m-t-5" id="btSave"><i class="fa fa-save"></i> Cập nhật</button>
+                    <button class="btn btn-default m-b-5 m-t-5" id="btCancel"><i class="fa fa-ban col-red"></i> Hủy bỏ</button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 m-b-10 padding-0">
+            <div class="grid-box-title">Danh sách dịch vụ</div>
+            <div class="grid-box-body">
+                <div class="table-responsive">
+                    <table id="dichvu-table" class="table table-bordered table-striped table-hover dataTable dichvu-table">  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/HMS/dich-vu-index.js"></script>
+
+<script>
+    var obj = new HMS.DichVu();
+    obj.Init();
+
+    function Edit(id) {
+        obj.Edit(id);
+    }
+
+    function Delete(id) {
+        obj.Delete(id);
+    }
+
+    $(document).ready(function () {
+        $('.datepicker').datepicker();
+    });
+
+    var $demoMaskedInput = $('.masked-input');
+    $demoMaskedInput.find('.time24').inputmask('hh:mm', { placeholder: '__:__ _m', alias: 'time24', hourFormat: '24' });
+</script>
+

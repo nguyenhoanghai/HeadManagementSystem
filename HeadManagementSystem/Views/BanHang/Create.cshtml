@@ -1,0 +1,258 @@
+﻿@using HMS.Data.Model
+@{
+    ViewBag.Title = "Tạo phiếu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var jobs = ViewBag.Jobs as List<ModelSelectItem>;
+    var models = ViewBag.Models as List<ModelSelectItem>;
+    var nhanviens = ViewBag.Nhanviens as List<ModelSelectItem>;
+}
+
+<div class="row clearfix">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="header bg-teal">
+                <div class="row clearfix">
+                    <div class="col-xs-12 col-sm-6">
+                        <h2>Tạo phiếu bán hàng</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="body  ">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-10 padding-0">
+                    <div class="add-box-title">Thông tin khách hàng</div>
+                    <div class="add-box-body masked-input">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="code">
+                                    <label class="form-label">Mã khách hàng</label>
+                                </div>
+                                <div class="err-code"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button class="btn btn-primary m-b-5 m-t-5 btn-find">Tìm kiếm</button>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="name">
+                                    <label class="form-label">Tên khách hàng</label>
+                                </div>
+                                <div class="err-name"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control date  " id="ngaysinh">
+                                    <label class="form-label">Ngày sinh</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <select class="form-control show-tick" id="gioitinh" data-live-search="true">
+                                        <option value="1">Nam</option>
+                                        <option value="0">Nữ</option>
+                                    </select>
+                                    <label class="form-label">Giới tính</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="phone">
+                                    <label class="form-label">Số điện thoại</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <select class="form-control show-tick" data-live-search="true" id="tinh-thanhpho"></select>
+                                    <label class="form-label">Tỉnh/Thành phố</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <select class="form-control show-tick" data-live-search="true" id="quan-huyen"></select>
+                                    <label class="form-label">Quận/Huyện</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="phuong">
+                                    <label class="form-label">Phường</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <select class="form-control show-tick" data-live-search="true" id="jobid">
+                                        @if (jobs != null)
+                                        {
+                                            for (int i = 0; i < jobs.Count; i++)
+                                            {
+                                                <option value="@jobs[i].Id">@jobs[i].Code</option>
+                                            }
+                                        }
+                                    </select>
+                                    <label class="form-label">Nghề nghiệp</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea rows="1" class="form-control no-resize auto-growth" id="address"></textarea>
+                                    <label class="form-label">Địa chỉ</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea rows="1" class="form-control no-resize auto-growth" id="note"></textarea>
+                                    <label class="form-label">Ghi chú</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
+                            <button class="btn btn-danger m-b-5 m-t-5  " id="btAdd"><i class="fa fa-plus-circle"></i> Tạo khách hàng</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-10 padding-0">
+                    <div class="add-box-title">Thông tin xe</div>
+                    <div class="add-box-body  masked-input">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" id="ngaytao">
+                                    <label class="form-label">Ngày</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="sophieu">
+                                    <label class="form-label">Số phiếu</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <select class="form-control show-tick" data-live-search="true" id="tuvan">
+                                        @if (nhanviens != null)
+                                        {
+                                            for (int i = 0; i < nhanviens.Count; i++)
+                                            {
+                                        <option value="@nhanviens[i].Id">@nhanviens[i].Code - @nhanviens[i].Name</option>
+                                            }
+                                        }
+                                    </select>
+                                    <label class="form-label">Nhân viên tư vấn</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <select class="form-control show-tick" data-live-search="true" id="model">
+                                        @if (models != null)
+                                        {
+                                            for (int i = 0; i < models.Count; i++)
+                                            {
+                                                <option value="@models[i].Id">@models[i].Name</option>
+                                            }
+                                        }
+                                    </select>
+                                    <label class="form-label">Model xe</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="somay">
+                                    <label class="form-label">Số máy</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="sokhung">
+                                    <label class="form-label">Số khung</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="bienso">
+                                    <label class="form-label">Biển số xe</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="number" class="form-control  " id="giaban" />
+                                    <label class="form-label">Giá bán</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="number" class="form-control  " id="chietkhau" value="0"/>
+                                    <label class="form-label">Chiết khấu (%)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="form-group form-float">
+                                <div class="form-line focused">
+                                    <label class="form-control fake-input " id="thanhtien" >0</label>
+                                    <label class="form-label">Thành tiền</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea rows="1" class="form-control no-resize auto-growth"></textarea>
+                                    <label class="form-label">Ghi chú</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
+                            <button class="btn btn-primary m-b-5 m-t-5" id="btAddPhieu">Tạo phiếu</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/HMS/p-bh-index.js"></script>
+<script>
+    var obj = new HMS.BanHang();
+    obj.Init();
+</script>
