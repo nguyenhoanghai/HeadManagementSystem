@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,8 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GPRO.Ultilities">
+      <HintPath>..\Libraries\GPRO.Ultilities.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -48,6 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BLLAccount.cs" />
+    <Compile Include="BLL\BLLDichVu.cs" />
+    <Compile Include="BLL\BLLReceipt.cs" />
+    <Compile Include="BLL\BLLSellReceipt.cs" />
+    <Compile Include="BLL\BLLKhachHang.cs" />
+    <Compile Include="BLL\BLLJob.cs" />
+    <Compile Include="BLL\BLLWork.cs" />
+    <Compile Include="BLL\BLLWorkType.cs" />
+    <Compile Include="BLL\BLLPhuTung.cs" />
+    <Compile Include="BLL\BLLUser.cs" />
+    <Compile Include="BLL\BLLUserType.cs" />
+    <Compile Include="BLL\BLLModel.cs" />
     <Compile Include="HMSModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -63,6 +84,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HMSModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="H_Account.cs">
+      <DependentUpon>HMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="H_DichVu.cs">
+      <DependentUpon>HMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="H_KhachHang.cs">
       <DependentUpon>HMSModel.tt</DependentUpon>
     </Compile>
@@ -70,6 +97,9 @@
       <DependentUpon>HMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="H_Model.cs">
+      <DependentUpon>HMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="H_NgheNghiep.cs">
       <DependentUpon>HMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="H_NhanVien.cs">
@@ -87,6 +117,29 @@
     <Compile Include="H_Receipt_Work.cs">
       <DependentUpon>HMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="H_SellReceipt.cs">
+      <DependentUpon>HMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="H_Work.cs">
+      <DependentUpon>HMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="H_WorkType.cs">
+      <DependentUpon>HMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Model\JobModel.cs" />
+    <Compile Include="Model\ModelSelectItem.cs" />
+    <Compile Include="Model\DichVuModel.cs" />
+    <Compile Include="Model\KhachHangModel.cs" />
+    <Compile Include="Model\PhuTungModel.cs" />
+    <Compile Include="Model\ReceiptModel.cs" />
+    <Compile Include="Model\ResponseModel.cs" />
+    <Compile Include="Model\NhanVienModel.cs" />
+    <Compile Include="Model\SellReceiptModel.cs" />
+    <Compile Include="Model\UserTypeModel.cs" />
+    <Compile Include="Model\WorkModel.cs" />
+    <Compile Include="Model\WorkTypeModel.cs" />
+    <Compile Include="Model\XeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -115,9 +168,14 @@
       <LastGenOutput>HMSModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BLL\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
 </Project>

@@ -1,4 +1,4 @@
-if (typeof jQuery === "undefined") {
+﻿if (typeof jQuery === "undefined") {
     throw new Error("jQuery plugins need to be before this file");
 }
 
@@ -308,7 +308,12 @@ $.AdminBSB.input = {
 */
 $.AdminBSB.select = {
     activate: function () {
-        if ($.fn.selectpicker) { $('select:not(.ms)').selectpicker(); }
+        if ($.fn.selectpicker) {
+            $('select:not(.ms)').selectpicker({
+                noneSelectedText: 'Chọn ...',
+                noneResultsText:'Không tìm thấy {0}'
+            });
+        }
     }
 }
 //==========================================================================================================================

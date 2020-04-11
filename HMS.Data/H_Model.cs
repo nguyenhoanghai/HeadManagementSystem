@@ -17,6 +17,7 @@ namespace HMS.Data
         public H_Model()
         {
             this.H_KhachHang = new HashSet<H_KhachHang>();
+            this.H_SellReceipt = new HashSet<H_SellReceipt>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,6 @@ namespace HMS.Data
         public bool IsDeleted { get; set; }
     
         public virtual ICollection<H_KhachHang> H_KhachHang { get; set; }
+        public virtual ICollection<H_SellReceipt> H_SellReceipt { get; set; }
     }
 }

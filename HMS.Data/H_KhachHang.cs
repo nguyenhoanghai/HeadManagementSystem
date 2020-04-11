@@ -17,10 +17,12 @@ namespace HMS.Data
         public H_KhachHang()
         {
             this.H_Receipt = new HashSet<H_Receipt>();
+            this.H_SellReceipt = new HashSet<H_SellReceipt>();
         }
     
         public int Id { get; set; }
-        public int ModelId { get; set; }
+        public int Index { get; set; }
+        public Nullable<int> ModelId { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public bool Gender { get; set; }
@@ -30,15 +32,17 @@ namespace HMS.Data
         public string Wards { get; set; }
         public string District { get; set; }
         public string City { get; set; }
-        public string Job { get; set; }
+        public Nullable<int> JobId { get; set; }
         public string Note { get; set; }
         public string MachineNumber { get; set; }
         public string ChassisNumber { get; set; }
         public string LicenseNumber { get; set; }
-        public Nullable<int> Km { get; set; }
+        public int Km { get; set; }
         public bool IsDeleted { get; set; }
     
         public virtual H_Model H_Model { get; set; }
+        public virtual H_NgheNghiep H_NgheNghiep { get; set; }
         public virtual ICollection<H_Receipt> H_Receipt { get; set; }
+        public virtual ICollection<H_SellReceipt> H_SellReceipt { get; set; }
     }
 }

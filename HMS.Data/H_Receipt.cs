@@ -40,12 +40,12 @@ namespace HMS.Data
         public double Total_PTung { get; set; }
         public bool IsDeleted { get; set; }
     
-        public virtual H_KhachHang H_KhachHang { get; set; }
+        public virtual ICollection<H_Receipt_PT> H_Receipt_PT { get; set; }
         public virtual H_NhanVien H_NhanVien { get; set; }
         public virtual H_NhanVien H_NhanVien1 { get; set; }
         public virtual H_NhanVien H_NhanVien2 { get; set; }
         public virtual H_NhanVien H_NhanVien3 { get; set; }
         public virtual H_NhanVien H_NhanVien4 { get; set; }
-        public virtual ICollection<H_Receipt_PT> H_Receipt_PT { get; set; }
+        public virtual H_KhachHang H_KhachHang { get; set; }
     }
 }
