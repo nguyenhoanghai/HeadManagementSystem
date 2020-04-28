@@ -12,15 +12,18 @@ namespace HMS.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class H_Receipt_Work
+    public partial class H_Receipt_DichVu
     {
         public int Id { get; set; }
         public int ReceiptId { get; set; }
-        public int WorkId { get; set; }
+        public int DichVuId { get; set; }
         public int Index { get; set; }
         public double Price { get; set; }
         public double Percent { get; set; }
         public double PricePercent { get; set; }
         public bool IsDeleted { get; set; }
+    
+        public virtual H_DichVu H_DichVu { get; set; }
+        public virtual H_Receiption H_Receiption { get; set; }
     }
 }

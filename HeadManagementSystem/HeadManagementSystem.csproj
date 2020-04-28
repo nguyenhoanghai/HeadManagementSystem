@@ -235,8 +235,10 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DichVuController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\WorkController.cs" />
     <Compile Include="Controllers\WorkTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -265,6 +267,7 @@
     <Content Include="Content\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome-4.7.0\HELP-US-OUT.txt" />
     <Content Include="Content\hai-custom.css" />
+    <Content Include="Content\HMS\receipt-edit.css" />
     <Content Include="Content\HMS\user-index.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
@@ -309,8 +312,10 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="images\user-img-background.jpg" />
     <Content Include="Scripts\HMS\customer-index.js" />
-    <Content Include="Scripts\HMS\p-bh-index.js" />
-    <Content Include="Scripts\HMS\p-dv-index.js" />
+    <Content Include="Scripts\HMS\p-bh-edit.js" />
+    <Content Include="Scripts\HMS\p-bh-create.js" />
+    <Content Include="Scripts\HMS\p-dv-edit.js" />
+    <Content Include="Scripts\HMS\p-dv-create.js" />
     <Content Include="Scripts\HMS\khach-hang-index.js" />
     <Content Include="Scripts\HMS\job-index.js" />
     <Content Include="Scripts\HMS\work-index.js" />
@@ -3738,10 +3743,19 @@
     <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\BanHang\Create.cshtml" />
+    <Content Include="Views\Receipt\Edit.cshtml" />
+    <Content Include="Views\Receipt\PhieuMo.cshtml" />
+    <Content Include="Views\Receipt\PhieuDong.cshtml" />
+    <Content Include="Views\BanHang\Index.cshtml" />
+    <Content Include="Views\Receipt\Detail.cshtml" />
+    <Content Include="Views\KhachHang\Detail.cshtml" />
+    <Content Include="Views\Error\Page404.cshtml" />
+    <Content Include="Views\BanHang\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Config\" />
+    <Folder Include="Excel_Template\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

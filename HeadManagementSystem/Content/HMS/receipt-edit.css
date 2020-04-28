@@ -1,0 +1,23 @@
+﻿.i-number {
+    width: 35px;
+    text-align: right;
+    padding: 0 5px;
+    border: none;
+    border-bottom: 1.3px dotted #009688;
+    background: transparent; 
+}
+
+.i-code {
+    width: 120px;
+    border: none;
+    border-bottom: 1.2px dotted #009688;
+    background: transparent;
+}
+
+.i-name {
+    width: 100%;
+    border: none;
+    border-bottom: 1.2px dotted #009688;
+    background: transparent;
+}
+

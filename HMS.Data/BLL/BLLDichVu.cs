@@ -37,7 +37,7 @@ namespace HMS.Data.BLL
                         TenCV = x.H_Work.Name,
                         LoaiCVId = x.WorkTypeId,
                         CVId = x.WorkId,
-                        TGXL = x.TimeProcess, 
+                        TGXL = x.TimeProcess,
                         GiaBan = x.Price_Out,
                         GiaMua = x.Price_In,
                         Note = x.Note
@@ -50,11 +50,13 @@ namespace HMS.Data.BLL
             }
         }
 
-        public List<ModelSelectItem> GetLookUp(string connectString)
+        public List<ModelSelectItem> GetLookUp(string connectString, int wtypeId)
         {
             using (var db = new HMSEntities(connectString))
             {
-                return db.H_DichVu.Where(x => !x.IsDeleted).Select(x => new ModelSelectItem() { Id = x.Id, Code = x.H_Work.Code, Name = x.H_Work.Name, Data = x.WorkId, Record = x.WorkTypeId, Data1 = x.Price_In, Data2 = x.Price_Out }).ToList();
+                if (wtypeId > 0)
+                    return (from x in db.H_DichVu where !x.IsDeleted && x.WorkTypeId == wtypeId select new ModelSelectItem() { Id = x.Id, Code = x.H_Work.Code, Name = x.H_Work.Name, Data = x.WorkId, Record = x.WorkTypeId, _double = x.Price_In, _double1 = x.Price_Out }).ToList();
+                return (from x in db.H_DichVu where !x.IsDeleted select new ModelSelectItem() { Id = x.Id, Code = x.H_Work.Code, Name = x.H_Work.Name, Data = x.WorkId, Record = x.WorkTypeId, _double = x.Price_In, _double1 = x.Price_Out }).ToList();
             }
         }
 
@@ -70,7 +72,7 @@ namespace HMS.Data.BLL
                     if (model.Id == 0)
                     {
                         DichVu = new H_DichVu()
-                        { 
+                        {
                             WorkId = model.CVId,
                             WorkTypeId = model.LoaiCVId,
                             TimeProcess = model.TGXL,
@@ -124,9 +126,9 @@ namespace HMS.Data.BLL
                 return false;
             }
         }
-        private bool CheckExists( DichVuModel DichVu, HMSEntities db)
+        private bool CheckExists(DichVuModel DichVu, HMSEntities db)
         {
-            H_DichVu  obj = db.H_DichVu.FirstOrDefault(x => !x.IsDeleted && x.Id != DichVu.Id &&  x.WorkId == DichVu.CVId && x.WorkTypeId == DichVu.LoaiCVId);
+            H_DichVu obj = db.H_DichVu.FirstOrDefault(x => !x.IsDeleted && x.Id != DichVu.Id && x.WorkId == DichVu.CVId && x.WorkTypeId == DichVu.LoaiCVId);
             return obj != null ? true : false;
         }
     }

@@ -114,6 +114,31 @@ HMS.User = function () {
                     RefreshControls();
                 }, 500); 
             });
+
+        $('#btnhap-excel').click(() => { $('#file-mau').click() })
+        $("#file-mau").change(function () {
+            var data = new FormData();
+            var files = $("#file-mau").get(0).files;
+            if (files.length > 0) {
+                data.append("file", files[0]);
+            }
+            $.ajax({
+                url: "/user/InsertExcel",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (res) {
+                    if (res == '0')
+                        swal("Thông báo", "Nhập nhân viên từ file excel thất bại. Vui lòng tải file mẫu và thử lại.!",'error'); 
+                    else
+                        Gets();
+                },
+                error: function (er) {
+                    swal("Thông báo", "Nhập nhân viên từ file excel thất bại. Vui lòng tải file mẫu và thử lại.!", 'error');
+                }
+            });
+        });
     }
 
     function Delete(Id) {

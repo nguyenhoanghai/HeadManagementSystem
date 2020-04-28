@@ -1,7 +1,9 @@
 ﻿using GPRO.Ultilities;
 using HMS.Data.Model;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace HMS.Data.BLL
@@ -73,7 +75,7 @@ namespace HMS.Data.BLL
                     if (model.Id == 0)
                     {
                         var last = db.H_NhanVien.OrderByDescending(x => x.Index).FirstOrDefault();
-                        string code = "NV-" + DateTime.Now.ToString("ddMMyy") + "-"+getNumber(last.Index+1);
+                        string code = "NV-" + DateTime.Now.ToString("ddMMyy") + "-" + getNumber(last.Index + 1);
                         nv = new H_NhanVien()
                         {
                             Code = code,
@@ -97,7 +99,7 @@ namespace HMS.Data.BLL
                     {
                         nv = db.H_NhanVien.FirstOrDefault(x => !x.IsDeleted && x.Id == model.Id);
                         if (nv != null)
-                        { 
+                        {
                             nv.Name = model.Ten;
                             nv.Address = model.DiaChi;
                             nv.Phone = model.DienThoai;
@@ -188,5 +190,76 @@ namespace HMS.Data.BLL
                 num = index.ToString();
             return num;
         }
+
+        public int InsertFromExcel(Stream fileStream, string path, string connectionString)
+        {
+            try
+            {
+                using (var excel = new ExcelPackage(fileStream))
+                {
+                    var ws = excel.Workbook.Worksheets.First();
+                    using (var db = new HMSEntities(connectionString))
+                    {
+                        var dsLoais = (from x in db.H_LoaiNhanVien where !x.IsDeleted select new { Id = x.Id, Code = x.Code, Name = x.Note }).ToList();
+                        var dsNVs = (from x in db.H_NhanVien where !x.IsDeleted select new { Id = x.Id, Code = x.Code, Name = x.Name }).ToList();
+
+                        H_NhanVien nhanVien = null;
+                        H_LoaiNhanVien loaiNhanVien = null;
+                        H_Account account = null;
+
+                        string _loainv = "", _code = "", _name = "", _dthoai = "", _dChi = "", _ghiChu = "", _tk = "", _mk = "";
+                        for (int ii = 2; ii <= ws.Dimension.End.Row; ii++)
+                        {
+                            _loainv = ws.Cells[ii, 1].Text.ToString();
+                            _code = ws.Cells[ii, 2].Text.ToString();
+                            _name = ws.Cells[ii, 3].Text.ToString();
+                            _dthoai = ws.Cells[ii, 4].Text.ToString();
+                            _dChi = ws.Cells[ii, 5].Text.ToString();
+                            _ghiChu = ws.Cells[ii, 6].Text.ToString();
+                            _tk = ws.Cells[ii, 7].Text.ToString();
+                            _mk = ws.Cells[ii, 8].Text.ToString();
+
+                            if (dsNVs.FirstOrDefault(x => x.Code.Trim().ToUpper() == _code.Trim().ToUpper() || x.Name.Trim().ToUpper() == _name.Trim().ToUpper()) == null)
+                            {
+                                var found = dsLoais.FirstOrDefault(x => x.Name.Trim().ToUpper() == _loainv.Trim().ToUpper());
+                                if (found == null)
+                                {
+                                    loaiNhanVien = new H_LoaiNhanVien() { Code = _loainv, Note = _loainv };
+                                    loaiNhanVien.H_NhanVien = new List<H_NhanVien>();
+                                    loaiNhanVien.H_NhanVien.Add(nhanVien);
+                                    nhanVien = new H_NhanVien() { Code = _code, Name = _name, Phone = _dthoai, Address = _dChi, Note = _ghiChu, H_LoaiNhanVien = loaiNhanVien };
+                                    if (!string.IsNullOrEmpty(_tk) && !string.IsNullOrEmpty(_mk))
+                                    {
+                                        account = new H_Account() { AccName = _tk, Password = GlobalFunction.EncryptMD5(_mk), IsAdmin = false, H_NhanVien = nhanVien, Role = 1 };
+                                        nhanVien.H_Account = new List<H_Account>();
+                                        nhanVien.H_Account.Add(account);
+                                    }
+                                    db.H_LoaiNhanVien.Add(loaiNhanVien);
+
+                                }
+                                else
+                                {
+                                    nhanVien = new H_NhanVien() { Code = _code, Name = _name, Phone = _dthoai, Address = _dChi, Note = _ghiChu, LoaiNVId = found.Id };
+                                    if (!string.IsNullOrEmpty(_tk) && !string.IsNullOrEmpty(_mk))
+                                    {
+                                        account = new H_Account() { AccName = _tk, Password = GlobalFunction.EncryptMD5(_mk), IsAdmin = false, H_NhanVien = nhanVien, Role = 1 };
+                                        nhanVien.H_Account = new List<H_Account>();
+                                        nhanVien.H_Account.Add(account);
+                                    }
+                                    db.H_NhanVien.Add(nhanVien);
+                                }
+                            }
+                        }
+                        db.SaveChanges();
+                        return 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
     }
 }

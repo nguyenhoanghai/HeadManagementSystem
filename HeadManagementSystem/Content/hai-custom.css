@@ -8,12 +8,13 @@
     font-size: 14px;
     line-height: 25px;
 }
-.dropdown-menu > li > form > a i.material-icons {
-    float: left;
-    margin-right: 7px;
-    margin-top: 2px;
-    font-size: 20px;
-}
+
+    .dropdown-menu > li > form > a i.material-icons {
+        float: left;
+        margin-right: 7px;
+        margin-top: 2px;
+        font-size: 20px;
+    }
 
 .sidebar {
     width: 200px
@@ -132,14 +133,15 @@ section.content {
     .form-group .form-line.focused .form-label {
         color: #009688;
         font-weight: 600;
-        z-index:1
+        z-index: 1
     }
 
     .form-group .form-line:after {
-        border-bottom-color: #009688  
+        border-bottom-color: #009688
     }
-    .form-group .form-control{
-        min-height:34px
+
+    .form-group .form-control {
+        min-height: 34px
     }
 
 .bootstrap-select .dropdown-toggle {
@@ -147,24 +149,27 @@ section.content {
     margin-top: 10px;
 }
 
-.bootstrap-select .dropdown-menu { 
+.bootstrap-select .dropdown-menu {
     margin-top: 0px !important;
     padding: 0px 0px 0px 33px !important;
 }
+
     .bootstrap-select .dropdown-menu .bs-searchbox input[type="text"] {
         padding-left: 10px;
     }
 
-.btn:not(.btn-link):not(.btn-circle) i { 
+.btn:not(.btn-link):not(.btn-circle) i {
     top: 1px !important;
 }
 
-.table-edit-delete-col{
-    width:30px;
-    text-align:center
+.table-edit-delete-col {
+    width: 30px;
+    text-align: center
 }
 
-.table.dataTable{width:100% !important}
+.table.dataTable {
+    width: 100% !important
+}
 
 .err-msg {
     color: red;
@@ -181,26 +186,105 @@ section.content {
     padding: 10px;
     border: 1px solid #ccc;
     border-bottom: 2px solid #009688;
-    color: #009688  ;
+    color: #009688;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 11px;
 }
+
 .add-box-body,
 .grid-box-body {
     padding: 20px 10px 0 10px;
     border: 1px solid #ccc;
     border-top: none
 }
+
 .grid-box-body {
-    padding:  10px; 
+    padding: 10px;
 }
 
 .upper-text {
-    text-transform:uppercase !important
+    text-transform: uppercase !important
 }
 
 .fake-input {
     line-height: 28px;
-    margin-bottom:0
+    margin-bottom: 0
+}
+
+.line {
+    border: 1px solid #009688 !important;
+    clear: both;
+    margin-bottom:10px
+}
+
+.disabled,
+.disabled .filter-option,
+.disabled .dropdown-toggle {
+    background: #eee
+}
+
+    .disabled .dropdown-toggle {
+        margin-top: 8px !important;
+    }
+
+    .disabled .bs-caret {
+        display: none
+    }
+
+.btn:not(.btn-link):not(.btn-circle) span {
+    margin-left: 0 !important;
+    top: 0 !important
+}
+
+.label-select {
+    left: 0;
+    font-size: 12px;
+    color: #009688;
+    font-weight: 600;
+    z-index: 1;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+}
+
+.form-select {
+    margin-top: -16px !important
+}
+
+    .form-select .bootstrap-select {
+        margin-top: -8px;
+        border-bottom: 2px solid #009688 !important
+    }
+
+.bold {
+    font-weight: bold !important
+}
+
+.p-r-0 {
+    padding-right: 0 !important
+}
+
+.p-l-0 {
+    padding-left: 0 !important
+}
+
+.p-r-5 {
+    padding-right: 5px !important
+}
+
+.p-l-5 {
+    padding-left: 5px !important
+}
+
+.m-b-0 {
+    margin-bottom: 0 !important
+}
+
+.m-b-10 {
+    margin-bottom: 10px !important
+}
+
+.table-responsive{
+    min-height:350px
 }

@@ -66,5 +66,20 @@ namespace HeadManagementSystem.Helper
             }
         }
 
+        public string getNumber(int index)
+        {
+            string num = "00000";
+            if (index < 10)
+                num = "0000" + index;
+            else if (index > 10 && index < 100)
+                num = "000" + index;
+            else if (index > 100 && index < 1000)
+                num = "00" + index;
+            else if (index > 1000 && index < 10000)
+                num = "0" + index;
+            else
+                num = index.ToString();
+            return num;
+        }
     }
 }

@@ -46,7 +46,7 @@ namespace HeadManagementSystem.Constant.Authentication
                 (int)formAuthenticationTicketVersion,
                 userData.LoginName,
                 DateTime.Now,
-                (rememberMe ? DateTime.Now.AddDays(AppSetting.DaysExpiredRememberMeLogin) : DateTime.Now.AddMinutes(20)),
+                (rememberMe ? DateTime.Now.AddDays(AppSetting.DaysExpiredRememberMeLogin) : DateTime.Now.AddMinutes(60)),
                 rememberMe,
                 userDataJSON,
                 FormsAuthentication.FormsCookiePath);

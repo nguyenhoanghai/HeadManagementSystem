@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HMS.Data.Model
 {
-   public class KhachHangModel
+    public class _KhachHangModel
     {
-        public int Id { get; set; }
-        public int? ModelId { get; set; }
-        public string strModel { get; set; }
         public string Ma { get; set; }
         public string Ten { get; set; }
         public string DThoai { get; set; }
@@ -20,12 +14,37 @@ namespace HMS.Data.Model
         public string TPho { get; set; }
         public string Huyen { get; set; }
         public string Phuong { get; set; }
+        public string NNghiep { get; set; }
+        public int? JobId { get; set; }
         public string Note { get; set; }
+    }
+
+    public class KhachHangModel : _KhachHangModel
+    {
+        public int Id { get; set; }
+        public int? ModelId { get; set; }
+        public string strModel { get; set; }
         public string SoMay { get; set; }
         public string SoSuon { get; set; }
         public string BienSo { get; set; }
-        public int Km { get; set; }
-        public string NNghiep { get; set; }
-        public int? JobId { get; set; }
+        public int Km { get; set; }        
+        public List<ModelSelectItem> Xes { get; set; }
+        public KhachHangModel()
+        {
+            Xes = new List<ModelSelectItem>();
+        }
+    }
+
+    public class KhachHangCollectModel
+    {
+        public List<PhieuMuaModel> All { get; set; }
+        public List<PhieuMuaModel> DichVus { get; set; }
+        public List<PhieuMuaModel> Buys { get; set; }
+        public KhachHangCollectModel()
+        {
+            All = new List<PhieuMuaModel>();
+            DichVus = new List<PhieuMuaModel>();
+            Buys = new List<PhieuMuaModel>();
+        }
     }
 }

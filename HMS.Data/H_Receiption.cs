@@ -12,17 +12,18 @@ namespace HMS.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class H_Receipt
+    public partial class H_Receiption
     {
-        public H_Receipt()
+        public H_Receiption()
         {
+            this.H_Receipt_DichVu = new HashSet<H_Receipt_DichVu>();
             this.H_Receipt_PT = new HashSet<H_Receipt_PT>();
         }
     
         public int Id { get; set; }
+        public Nullable<int> SellReceiptId { get; set; }
         public int KHId { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> ClosedDate { get; set; }
+        public int WorkTypeId { get; set; }
         public string Code { get; set; }
         public Nullable<int> NV_TiepNhan { get; set; }
         public Nullable<int> NV_SuaXe { get; set; }
@@ -32,20 +33,36 @@ namespace HMS.Data
         public string Required { get; set; }
         public string CheckResult { get; set; }
         public string StatusBefore { get; set; }
+        public int QMSServiceId { get; set; }
         public int QMSNumber { get; set; }
         public int Old_Km { get; set; }
         public int New_Km { get; set; }
         public double Total { get; set; }
+        public int SL_PT { get; set; }
+        public double Total_NhapPT { get; set; }
         public double Total_Cong { get; set; }
         public double Total_PTung { get; set; }
+        public Nullable<int> ModelId { get; set; }
+        public string MachineNumber { get; set; }
+        public string ChassisNumber { get; set; }
+        public string LicenseNumber { get; set; }
+        public string Note { get; set; }
+        public Nullable<System.DateTime> ClosedDate { get; set; }
+        public System.DateTime Date { get; set; }
+        public System.DateTime CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
+        public int Index { get; set; }
     
-        public virtual ICollection<H_Receipt_PT> H_Receipt_PT { get; set; }
+        public virtual H_KhachHang H_KhachHang { get; set; }
+        public virtual H_Model H_Model { get; set; }
         public virtual H_NhanVien H_NhanVien { get; set; }
         public virtual H_NhanVien H_NhanVien1 { get; set; }
         public virtual H_NhanVien H_NhanVien2 { get; set; }
         public virtual H_NhanVien H_NhanVien3 { get; set; }
         public virtual H_NhanVien H_NhanVien4 { get; set; }
-        public virtual H_KhachHang H_KhachHang { get; set; }
+        public virtual ICollection<H_Receipt_DichVu> H_Receipt_DichVu { get; set; }
+        public virtual ICollection<H_Receipt_PT> H_Receipt_PT { get; set; }
+        public virtual H_SellReceipt H_SellReceipt { get; set; }
+        public virtual H_WorkType H_WorkType { get; set; }
     }
 }

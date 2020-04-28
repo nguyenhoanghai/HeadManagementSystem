@@ -23,6 +23,7 @@ namespace HMS.Data.BLL
         }
         private BLLJob() { }
         #endregion
+
         public List<JobModel> Gets(string connectString)
         {
             using (var db = new HMSEntities(connectString))

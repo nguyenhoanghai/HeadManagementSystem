@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HMS.Data.Model;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HeadManagementSystem.Models
@@ -10,7 +12,6 @@ namespace HeadManagementSystem.Models
         public string Ten { get; set; }
         public string DThoai { get; set; }
         public bool GTinh { get; set; }
-
         
         public DateTime? NSinh { get; set; }
         public string DChi { get; set; }
@@ -38,7 +39,18 @@ namespace HeadManagementSystem.Models
         public double ChietKhau { get; set; }
         public double ThanhTien { get; set; }
         public string GhiChu { get; set; }
+        public int WTypeId { get; set; }
+
+        public int XeId { get; set; }
+        public int Index { get; set; }
 
         public string TaoKH { get; set; }
+        public int QMSServiceId { get; set; }
+
+        public List<ModelSelectItem> Xes { get; set; }
+        public DichVuModel()
+        {
+            Xes = new List<ModelSelectItem>();
+        }
     }
 }

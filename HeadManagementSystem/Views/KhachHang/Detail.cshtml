@@ -1,0 +1,207 @@
+﻿@model HMS.Data.Model.KhachHangModel
+@using HMS.Data.Model
+@{
+    ViewBag.Title = "Thông tin khách hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var dvs = (ViewBag.DichVus != null ? ViewBag.DichVus as List<PhieuEditModel> : new List<PhieuEditModel>());
+    var muas = (ViewBag.Muas != null ? ViewBag.Muas as List<SellReceiptModel> : new List<SellReceiptModel>());
+}
+
+<div class="card">
+    <div class="header bg-teal">
+        <div class="row clearfix">
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="upper-text">Thông tin khách hàng</h2>
+            </div>
+        </div>
+    </div>
+    <div class="body clearfix ">
+        @if (Model == null)
+        {
+            <span class="col-pink">Không tìm thấy thông tin khách hàng trong hệ thống.</span>
+        }
+        else
+        {
+            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                <li role="presentation" class="active"><a href="#home" data-toggle="tab" aria-expanded="false">Thông tin chung</a></li>
+                <li role="presentation" class=""><a href="#profile" data-toggle="tab" aria-expanded="false">Phiếu dịch vụ ( <span class='bold col-pink'>@dvs.Count</span> phiếu ) </a></li>
+                <li role="presentation" class=""><a href="#messages" data-toggle="tab" aria-expanded="true">Xe đã mua ( <span class='bold col-pink'>@muas.Count</span> xe) </a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="home">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Mã khách hàng: </label>
+                            <label class="col-pink">@Model.Ma</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Tên khách hàng: </label>
+                            <label class="">@(Model.Ten )</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Giới tính: </label>
+                            <label class=" ">@(Model.GTinh ? "Nam" : "Nữ" )</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Ngày sinh: </label>
+                            <label class=" ">@(Model.NSinh != null ? Model.NSinh.Value.ToString("dd/MM/yyyy") : "")</label>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Địa chỉ: </label>
+                            <label class=" ">@Model.DChi</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Phường: </label>
+                            <label class=" ">@Model.Phuong</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Quận/Huyện: </label>
+                            <label class=" ">@Model.Huyen</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Thành phố: </label>
+                            <label class=" ">@Model.TPho</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Số điện thoại: </label>
+                            <label class="col-pink ">@Model.DThoai</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Nghề nghiệp: </label>
+                            <label class=" ">@Model.NNghiep</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Ghi chú: </label>
+                            <label class="col-pink">@(Model.Note != null ? Model.Note : "")</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                        <img src="@ViewBag.ImageUrl " style="width:200px ; height:200px" />
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="profile">
+                    <div class="table-responsive">
+                        <table id="table-phieu-mo" class="table table-bordered table-striped table-hover dataTable ">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ngày tạo phiếu</th>
+                                    <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ngày đóng phiếu</th>
+                                    <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Số phiếu</th>
+                                    <th class="col-md-3 col-xs-3 col-sm-3 col-lg-1">Thông tin xe</th>
+                                    <th class="col-md-3 col-xs-3 col-sm-3 col-lg-1"></th>
+                                    <th class="col-md-3 col-xs-3 col-sm-3 col-lg-2">Nhân viên</th>
+                                    <th class="col-md-3 col-xs-3 col-sm-3 col-lg-1">Yêu cầu khách hàng</th>
+                                    <th class="col-md-3 col-xs-3 col-sm-3 col-lg-1">Kĩ thuật nhận xét</th>
+                                    <th class="col-md-3 col-xs-3 col-sm-3 col-lg-1">Trạng thái trước sửa chữa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in dvs)
+                                {
+                                    <tr>
+                                        <td class="col-blue">@item.Ngay.ToString("dd/MM/yyyy h:mm tt")</td>
+                                        <td class="col-pink">@(item.NgayDong.HasValue ? item.NgayDong.Value.ToString("dd/MM/yyyy h:mm tt") : "")</td>
+                                        <td>
+                                            <a href="/Receipt/detail?id=@item.Id"> @item.SoPhieu</a>
+                                        </td>
+                                        <td>
+                                            <div>@item.Model</div>
+                                            <div>@item.SoKhung</div>
+                                            <div>@item.SoMay</div>
+                                            <div>@item.BienSo</div>
+                                        </td>
+                                        <td>
+                                            <div class="col-pink bold">Tổng tiền: @item.Tong</div>
+                                            <div>Tiền công: @item.TongCong</div>
+                                            <div>Tiền phụ tùng: @item.TongPT</div>
+                                            <div>Tổng giá nhập PT: @item.TongGiaNhap</div>
+                                            <div>Số lượng PT: @item.SLPhuTung</div>
+                                        </td>
+                                        <td>
+                                            <div>KT Trưởng: @item.KTDKyName</div>
+                                            <div>Sửa xe: @item.SuaXeName</div>
+                                            <div>Tiếp nhận: @item.TiepNhanName</div>
+                                            <div>Thu ngân: @item.ThuNganName</div>
+                                            <div>KT Cuối: @item.KTraCuoiName</div>
+                                        </td>
+                                        <td>@item.YeuCau</td>
+                                        <td>@item.NhanXet</td>
+                                        <td>@item.TrangThai</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade " id="messages">
+                    <div class="table-responsive">
+                        <table id="table-phieu-ban-hang" class="table table-bordered table-striped table-hover dataTable ">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ngày tạo phiếu</th>
+                                    <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Số phiếu</th>
+                                    <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">nhân viên tư vấn</th>
+                                    <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Thông tin xe</th>
+                                    <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Giá bán</th>
+                                    <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Chiết khấu</th>
+                                    <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">thành tiền</th>
+                                    <th class="col-md-3 col-xs-3 col-sm-3 col-lg-3">Ghi chú</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in muas)
+                                {
+                                    <tr>
+                                        <td>@item.Ngay.ToString("dd/MM/yyyy h:mm tt")</td>
+                                        <td>
+                                            <a href=" "> @item.SoPhieu</a>
+                                        </td>
+                                        <td>
+                                            <div>@item.MaTuVan</div>
+                                            <div>@item.TenTuVan</div>
+                                        </td>
+                                        <td>
+                                            <div>@item.Model</div>
+                                            <div>@item.SoKhung</div>
+                                            <div>@item.SoMay</div>
+                                        </td>
+                                        <td>@item.GiaBan</td>
+                                        <td>@(item.ChietKhau)%</td>
+                                        <td>@item.ThanhTien</td>
+                                        <td>@item.GhiChu</td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+

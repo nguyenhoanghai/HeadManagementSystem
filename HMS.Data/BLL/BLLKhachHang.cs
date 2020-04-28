@@ -32,7 +32,7 @@ namespace HMS.Data.BLL
                 try
                 {
                     return (from x in db.H_KhachHang
-                            where !x.IsDeleted 
+                            where !x.IsDeleted
                             select new KhachHangModel()
                             {
                                 Id = x.Id,
@@ -45,13 +45,7 @@ namespace HMS.Data.BLL
                                 TPho = x.City,
                                 Huyen = x.District,
                                 Phuong = x.Wards,
-                                strModel = (x.H_Model != null ? x.H_Model.Note : ""),
-                                ModelId = x.ModelId,
                                 Note = x.Note,
-                                BienSo = x.LicenseNumber,
-                                SoMay = x.MachineNumber,
-                                SoSuon = x.ChassisNumber,
-                                Km = x.Km,
                                 NNghiep = (x.H_NgheNghiep != null ? x.H_NgheNghiep.Code : ""),
                                 JobId = x.JobId
                             }).ToList();
@@ -63,7 +57,39 @@ namespace HMS.Data.BLL
             }
         }
 
-        public  KhachHangModel  GetByCode(string connectString,string code)
+        public  KhachHangModel  Get(string connectString,int Id)
+        {
+            using (var db = new HMSEntities(connectString))
+            {
+                try
+                {
+                    return (from x in db.H_KhachHang
+                            where !x.IsDeleted && x.Id == Id
+                            select new KhachHangModel()
+                            {
+                                Id = x.Id,
+                                Ma = x.Code,
+                                Ten = x.Name,
+                                NSinh = x.Birthday,
+                                GTinh = x.Gender,
+                                DThoai = x.Phone,
+                                DChi = x.Address,
+                                TPho = x.City,
+                                Huyen = x.District,
+                                Phuong = x.Wards,
+                                Note = x.Note,
+                                NNghiep = (x.H_NgheNghiep != null ? x.H_NgheNghiep.Code : ""),
+                                JobId = x.JobId
+                            }).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public KhachHangModel GetByCode(string connectString, string code)
         {
             using (var db = new HMSEntities(connectString))
             {
@@ -83,18 +109,39 @@ namespace HMS.Data.BLL
                                    TPho = x.City,
                                    Huyen = x.District,
                                    Phuong = x.Wards,
-                                   strModel = (x.H_Model != null ? x.H_Model.Note : ""),
-                                   ModelId = x.ModelId,
                                    Note = x.Note,
-                                   BienSo = x.LicenseNumber,
-                                   SoMay = x.MachineNumber,
-                                   SoSuon = x.ChassisNumber,
-                                   Km = x.Km,
                                    NNghiep = (x.H_NgheNghiep != null ? x.H_NgheNghiep.Code : ""),
                                    JobId = x.JobId
                                }).ToList();
                     if (khs.Count > 0)
-                        return khs.FirstOrDefault();
+                    {
+                        var kh = khs.FirstOrDefault();
+                        var xes = (from x in db.H_SellReceipt
+                                   where !x.IsDeleted && !x.H_KhachHang.IsDeleted && x.KHId == kh.Id
+                                   orderby x.CreatedDate descending
+                                   select new
+                                   {
+                                       Id = x.Id,
+                                       Name = x.H_Model.Note,
+                                       Data1 = x.MachineNumber,
+                                       Data2 = x.ChassisNumber,
+                                       Data3 = x.LicenseNumber,
+                                       Data = x.ModelId,
+                                       Record = x.WorkTypeId,
+                                       Data4 = x.CreatedDate
+                                   }).ToList();
+                        if (xes.Count > 0)
+                        {
+                            for (int i = 0; i < xes.Count; i++)
+                            {
+                                var obj = new ModelSelectItem();
+                                Parse.CopyObject(xes[i], ref obj);
+                                obj.Data4 = xes[i].Data4.ToString("dd/MM/yyyy");
+                                kh.Xes.Add(obj);
+                            }
+                        }
+                        return kh;
+                    }
                     return null;
                 }
                 catch (Exception ex)
@@ -109,7 +156,7 @@ namespace HMS.Data.BLL
             using (var db = new HMSEntities(connectString))
             {
                 //if (loaiNV != 0)
-                  //  return db.H_KhachHang.Where(x => !x.IsDeleted && !x.H_LoaiNhanVien.IsDeleted && x.LoaiNVId == loaiNV).Select(x => new ModelSelectItem() { Id = x.Id, Name = x.Code }).ToList();
+                //  return db.H_KhachHang.Where(x => !x.IsDeleted && !x.H_LoaiNhanVien.IsDeleted && x.LoaiNVId == loaiNV).Select(x => new ModelSelectItem() { Id = x.Id, Name = x.Code }).ToList();
                 return db.H_KhachHang.Where(x => !x.IsDeleted).Select(x => new ModelSelectItem() { Id = x.Id, Name = x.Code }).ToList();
             }
         }
@@ -141,14 +188,8 @@ namespace HMS.Data.BLL
                             City = model.TPho,
                             District = model.Huyen,
                             Wards = model.Phuong,
-                            JobId = model.JobId, 
-                            Note = model.Note,
-                            ModelId = model.ModelId,
-                            Km = model.Km,
-                            LicenseNumber = model.BienSo,
-                            MachineNumber = model.SoMay,
-                            ChassisNumber = model.SoSuon,
-                            Index = 1
+                            JobId = model.JobId,
+                            Note = model.Note
                         };
                         //if (!string.IsNullOrEmpty(model.TaiKhoan) && !string.IsNullOrEmpty(model.MatKhau))
                         //{
@@ -170,16 +211,11 @@ namespace HMS.Data.BLL
                             nv.Birthday = model.NSinh;
                             nv.Address = model.DChi;
                             nv.Phone = model.DThoai;
-                            nv.ModelId = model.ModelId;
                             nv.Note = model.Note;
                             nv.City = model.TPho;
                             nv.District = model.Huyen;
                             nv.Wards = model.Phuong;
                             nv.JobId = model.JobId;
-                            nv.Km = model.Km;
-                            nv.LicenseNumber = model.BienSo;
-                            nv.MachineNumber = model.SoMay;
-                            nv.ChassisNumber = model.SoSuon;
                         }
                         else
                         {
@@ -188,7 +224,10 @@ namespace HMS.Data.BLL
                         }
                     }
                     if (result.IsSuccess)
+                    {
+                        result.Data = nv.Id;
                         db.SaveChanges();
+                    }
                 }
                 else
                 {
@@ -221,7 +260,7 @@ namespace HMS.Data.BLL
                 obj = db.H_KhachHang.FirstOrDefault(x => !x.IsDeleted && x.Id != KhachHang.Id && x.Code.Trim().ToUpper().Equals(KhachHang.Ma.Trim().ToUpper()));
             return obj != null ? true : false;
         }
- 
+
         public string getNumber(int index)
         {
             string num = "00000";

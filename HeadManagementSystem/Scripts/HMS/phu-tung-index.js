@@ -103,6 +103,30 @@ HMS.PhuTung = function () {
             Save();
         });
 
+        $('#btnhap-excel').click(() => { $('#file-mau').click() })
+        $("#file-mau").change(function () {
+            var data = new FormData();
+            var files = $("#file-mau").get(0).files;
+            if (files.length > 0) {
+                data.append("file", files[0]);
+            }
+            $.ajax({
+                url: "/phutung/InsertExcel",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (res) {
+                    if (res == '0')
+                        $('.up-err').html('Nhập phụ tùng từ file excel thất bại. Vui lòng tải file mẫu và thử lại.');
+                    else
+                        Gets();
+                },
+                error: function (er) {
+                    $('.up-err').html('Nhập phụ tùng từ file excel thất bại. Vui lòng tải file mẫu và thử lại.');
+                }
+            });
+        });
     }
 
     function Delete(Id) {
@@ -166,6 +190,12 @@ HMS.PhuTung = function () {
                 { "data": "GiaMua", "title": "giá mua", 'width': '100px' },
                 { "data": "GiaBan", "title": "giá bán", 'width': '100px' },
                 { "data": "Note", "title": "Ghi chú", 'width': 'calc(100% - 600px)', className: 'tb-PhuTung-note' },
+                {
+                     'width': '80px', className: 'tb-PhuTung-note', orderable: false,
+                    render: (data, type, full, meta) => {
+                        return `<a class="" href="/phutung/lichsu?id=${full.Id}"><i class="fa fa-print"></i> Xem lịch sử</a>`;
+                    }
+                },
                 {
                     'className': 'table-edit-delete-col',
                     "orderable": false,

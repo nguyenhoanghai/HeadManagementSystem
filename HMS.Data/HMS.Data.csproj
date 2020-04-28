@@ -40,8 +40,16 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\Libraries\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="GPRO.Ultilities">
       <HintPath>..\Libraries\GPRO.Ultilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Libraries\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -59,6 +67,7 @@
   <ItemGroup>
     <Compile Include="BLL\BLLAccount.cs" />
     <Compile Include="BLL\BLLDichVu.cs" />
+    <Compile Include="BLL\BLLNhapPT.cs" />
     <Compile Include="BLL\BLLReceipt.cs" />
     <Compile Include="BLL\BLLSellReceipt.cs" />
     <Compile Include="BLL\BLLKhachHang.cs" />
@@ -105,16 +114,19 @@
     <Compile Include="H_NhanVien.cs">
       <DependentUpon>HMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="H_NhapPT.cs">
+      <DependentUpon>HMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="H_PhuTung.cs">
       <DependentUpon>HMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="H_Receipt.cs">
+    <Compile Include="H_Receiption.cs">
+      <DependentUpon>HMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="H_Receipt_DichVu.cs">
       <DependentUpon>HMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="H_Receipt_PT.cs">
-      <DependentUpon>HMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="H_Receipt_Work.cs">
       <DependentUpon>HMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="H_SellReceipt.cs">
@@ -127,10 +139,12 @@
       <DependentUpon>HMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Model\PhieuEditModel.cs" />
     <Compile Include="Model\JobModel.cs" />
     <Compile Include="Model\ModelSelectItem.cs" />
     <Compile Include="Model\DichVuModel.cs" />
     <Compile Include="Model\KhachHangModel.cs" />
+    <Compile Include="Model\PhieuModel.cs" />
     <Compile Include="Model\PhuTungModel.cs" />
     <Compile Include="Model\ReceiptModel.cs" />
     <Compile Include="Model\ResponseModel.cs" />

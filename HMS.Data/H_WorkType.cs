@@ -17,6 +17,8 @@ namespace HMS.Data
         public H_WorkType()
         {
             this.H_DichVu = new HashSet<H_DichVu>();
+            this.H_SellReceipt = new HashSet<H_SellReceipt>();
+            this.H_Receiption = new HashSet<H_Receiption>();
         }
     
         public int Id { get; set; }
@@ -25,5 +27,7 @@ namespace HMS.Data
         public bool IsDeleted { get; set; }
     
         public virtual ICollection<H_DichVu> H_DichVu { get; set; }
+        public virtual ICollection<H_SellReceipt> H_SellReceipt { get; set; }
+        public virtual ICollection<H_Receiption> H_Receiption { get; set; }
     }
 }

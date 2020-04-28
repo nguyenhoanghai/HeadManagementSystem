@@ -207,10 +207,21 @@ HMS.KhachHang = function () {
                 }
             },
             "columns": [
-                { "orderable": true, "data": "Ma", "title": "Mã khách hàng", 'width': '100px' },
+                {
+                    "orderable": true, "data": "Ma", "title": "Mã khách hàng", 'width': '100px',
+                    render: (data, type, full, meta) => {
+                        return `<a href="/khachhang/detail?id=${full.Id}">${data}</a>`;
+                    }
+                },
                 { "data": "Ten", "title": "tên khách hàng", 'width': '150px' },
-                { "data": "NSinh", "title": "ngày sinh", 'width': '50px', render: (data, type, full, meta) => { return (data != null ? ddMMyyyy(data) : '') } },
-                { "data": "GTinh", "title": "giới tính", 'width': '30px', render: (data, type, full, meta) => { return (data ? '<i class="fa fa-male col-blue fa-2x"></i>' : '<i class="fa fa-female col-pink fa-2x"></i>') } },
+                {
+                    "data": "NSinh", "title": "ngày sinh", 'width': '50px',
+                    render: (data, type, full, meta) => { return (data != null ? ddMMyyyy(data) : '') }
+                },
+                {
+                    "data": "GTinh", "title": "giới tính", 'width': '30px',
+                    render: (data, type, full, meta) => { return (data ? '<i class="fa fa-male col-blue fa-2x"></i>' : '<i class="fa fa-female col-pink fa-2x"></i>') }
+                },
                 { "data": "DThoai", "title": "điện thoại", 'width': '70px' },
                 { "data": "DChi", "title": "địa chỉ", 'width': '300px' },
                 { "data": "Note", "title": "Ghi chú", 'width': 'calc(100% - 700px)', className: 'tb-KhachHang-note' },

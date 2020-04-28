@@ -20,16 +20,8 @@ HMS.namespace('Receipt');
 HMS.Receipt = function () {
     var Global = {
         UrlAction: {
-            Delete: '/Receipt/Delete',
-            Gets: '/Receipt/Gets',
-            Save: '/Receipt/Save',
-            Find: '/Khachhang/Get',
         },
         Data: {
-            Id: 0,
-            table: null,
-            selectedObj: { Id: 0 },
-            trans: [],
             ReceiptXe: [],
             HuyenValue: '',
             defaultTinh: 'Thành phố Hồ Chí Minh',
@@ -38,48 +30,15 @@ HMS.Receipt = function () {
             _Gtinh: 'Nam',
             _NNghiep: '',
             _Tinh: '',
+            _Xes: []
         }
     }
     this.GetGlobal = function () {
         return Global;
     }
 
-    this.Delete = function (Id) {
-        swal({
-            title: "Bạn có chắc muốn xóa?",
-            text: "Chú ý tất cả dữ liệu liên quan đến khách hàng này cũng sẽ bị mất theo.",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Xóa",
-            closeOnConfirm: true
-        }, function () {
-            Delete(Id);
-        });
-    }
-
-    this.Edit = function (Id) {
-        $('#btSave').show();
-        $('#btAdd').hide();
-        Global.Data.selectedObj = $.map(Global.Data.ReceiptXe, function (item, i) {
-            if (item.Id == Id)
-                return item;
-        })[0];
-        $('#tinh-thanhpho').val(Global.Data.selectedObj.TPho);
-        Global.Data.HuyenValue = Global.Data.selectedObj.Huyen;
-        $('#ngaysinh').val(moment(Global.Data.selectedObj.NSinh).format('DD/MM/YYYY'));
-        $('#name').val(Global.Data.selectedObj.Ten);
-        $('#gioitinh').val(Global.Data.selectedObj.GTinh ? '1' : '0');
-        $('#phone').val(Global.Data.selectedObj.DThoai);
-        $('#address').val(Global.Data.selectedObj.DChi);
-        $('#phuong').val(Global.Data.selectedObj.Phuong);
-        $('#note').val(Global.Data.selectedObj.Note);
-        $('#jobid').val(Global.Data.selectedObj.JobId);
-        $('#code').val(Global.Data.selectedObj.Ma);
-        $('#tinh-thanhpho').change();
-        RefreshControls();
-        //Textarea auto growth
-        autosize($('textarea.auto-growth'));
+    this.DisabledInfo = () => {
+        disabledInfo();
     }
 
     this.Init = function () {
@@ -92,11 +51,6 @@ HMS.Receipt = function () {
         });
         $('#tinh-thanhpho').change();
 
-        Gets();
-        $('#btSave').hide();
-
-
-
         var $demoMaskedInput = $('.masked-input');
         $demoMaskedInput.find('.date').inputmask('dd/mm/yyyy', { placeholder: '__/__/____' });
 
@@ -104,10 +58,11 @@ HMS.Receipt = function () {
         $('#gioitinh').val(Global.Data._Gtinh);
         $('#jobid').val(Global.Data._NNghiep);
 
-
+        $('#code').focus(() => { $('#code').select(); });
         RefreshControls();
         //Textarea auto growth
         autosize($('textarea.auto-growth'));
+
     }
 
     var RegisterEvent = function () {
@@ -121,165 +76,54 @@ HMS.Receipt = function () {
                     });
                 }
             });
-            //refresh lai select box
-            var inter = setInterval(function () {
-                $('#quan-huyen').selectpicker();
-                clearInterval(inter);
-            }, 1000);
+            $('#quan-huyen').selectpicker();
         });
+
         $('#btSave').click(function () {
-            $('#frmReceipt').appendTo('<input type="hidden" name ="TaoKH" id="TaoKH" value="1" />');
-            $('#frmReceipt').submit();
-            // Save();
-        });
-
-        $('#btCancel').click(function () {
-            $('#name').val('');
-            $('#note').val('');
-            $('#Receipt-type').val('');
-            $('#code').val('');
-            $('#phone').val('');
-            $('#acc').val('');
-            $('#pass').val('');
-            $('#address').val('');
-            $('#jobid').val('');
-            $('#btSave').hide();
-            $('#btAdd').show();
-            $('#acc').prop('disabled', false);
-            $('#pass').prop('disabled', false);
-            Global.Data.selectedObj = { Id: 0 };
-            Global.Data.HuyenValue = '';
-            RefreshControls();
-            $('.err-name').empty();
-            $('textarea.auto-growth').css('height', '34px');
-        });
-
-        $('#btAdd').click(function () {
-            $('#frmReceipt').appendTo('<input type="hidden" name ="TaoKH" id="TaoKH" value="1" />');
-            $('#frmReceipt').submit();
-            //  Save();
-        });
-
-        $("#Receipt-type").on("changed.bs.select",
-            function (e, clickedIndex, newValue, oldValue) {
-                var inter = setInterval(function () {
-                    clearInterval(inter);
-                    RefreshControls();
-                }, 500);
+            $.each(Global.Data._Xes, (i, item) => {
+                $('#frmReceipt').append('<input type="hidden" name ="Xes[' + i + '].Id" value="' + item.Id + '"/>');
+                $('#frmReceipt').append('<input type="hidden" name ="Xes[' + i + '].Name" value="' + item.Name + '"/>');
+                $('#frmReceipt').append('<input type="hidden" name ="Xes[' + i + '].Data" value="' + item.Data + '"/>');
+                $('#frmReceipt').append('<input type="hidden" name ="Xes[' + i + '].Data1" value="' + item.Data1 + '"/>');
+                $('#frmReceipt').append('<input type="hidden" name ="Xes[' + i + '].Data2" value="' + item.Data2 + '"/>');
+                $('#frmReceipt').append('<input type="hidden" name ="Xes[' + i + '].Data3" value="' + item.Data3 + '"/>');
+                $('#frmReceipt').append('<input type="hidden" name ="Xes[' + i + '].Data4" value="' + item.Data4 + '"/>');
+                $('#frmReceipt').append('<input type="hidden" name ="Xes[' + i + '].Record" value="' + item.Record + '"/>');
             });
+
+            $('input,select').prop('disabled', false);
+            $('#frmReceipt').submit();
+        });
 
         $('.btn-find').click(() => {
-            //findKH();
             window.location.href = ('/Receipt/Create?ma=' + $('#code').val());
         });
-    }
 
-    function Delete(Id) {
-        $.ajax({
-            url: Global.UrlAction.Delete,
-            type: 'POST',
-            data: JSON.stringify({ 'Id': Id }),
-            contentType: 'application/json charset=utf-8',
-            // beforeSend: function () { $('.progress').removeClass('hide'); },
-            success: function (response) {
-                // $('.progress').addClass('hide');
-                if (response.success) {
-                    Gets();
-                }
-                else
-                    swal("Lỗi", response.responseText, "error");
+        $('select[name="XeId"]').change(() => {
+            $('input[name="SoMay"]').prop('disabled', true);
+            $('input[name="SoKhung"]').prop('disabled', true);
+            $('select[name="ModelId"]').prop('disabled', true);
+            $('select[name="WTypeId"]').prop('disabled', true);
+            if ($('select[name="XeId"]').val() == '') {
+                $('input[name="SoMay"]').prop('disabled', false);
+                $('input[name="SoKhung"]').prop('disabled', false);
+                $('select[name="ModelId"]').prop('disabled', false);
+                $('select[name="WTypeId"]').prop('disabled', false);
             }
-        });
-    }
-
-    function Gets() {
-        $.ajax({
-            url: Global.UrlAction.Gets,
-            type: 'POST',
-            data: null,
-            contentType: 'application/json charset=utf-8',
-            beforeSend: function () { $('.progress').removeClass('hide'); },
-            success: function (objs) {
-                $('.progress').addClass('hide');
-                if (Global.Data.table != null) {
-                    Global.Data.table.destroy();
-                    $('#kh-table').empty();
-                    Global.Data.table = null;
-                    Global.Data.ReceiptXe.length = 0;
+            else {
+                var item = Global.Data._Xes.filter(x => x.Id == parseInt($('select[name="XeId"]').val()))[0];
+                if (item != null) {
+                    $('input[name="SoMay"]').attr('value', item.Data1);
+                    $('input[name="SoKhung"]').attr('value', item.Data2);
+                    $('input[name="BienSo"]').attr('value', item.Data3);
+                    $('select[name="ModelId"]').attr('value', item.Data3);
+                    $('select[name="WTypeId"]').attr('value', item.Record);
                 }
-                Global.Data.ReceiptXe = objs;
-                InitTable(objs);
             }
+            RefreshControls();
         });
-    }
 
-    function InitTable(Objs) {
-        Global.Data.table = $('#kh-table').DataTable({
-            responsive: true,
-            "data": Objs,
-            "dom": '<"top"<"col-sm-3 m-b-0 p-l-0"l><"col-sm-9 m-b-0"f><"clear">>rt<"bottom"<"col-sm-6 p-l-0"i><"col-sm-6 m-b-0"p><"clear">><"clear">',
-            "oLanguage": {
-                "sSearch": "Bộ lọc",
-                "sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
-                "sInfo": "Hiển thị từ _START_ - _END_ trong _TOTAL_ dòng",
-                'paginate': {
-                    'previous': '<span class="prev-icon"></span>',
-                    'next': '<span class="next-icon"></span>'
-                }
-            },
-            "columns": [
-                { "orderable": true, "data": "Ma", "title": "Mã khách hàng", 'width': '100px' },
-                { "data": "Ten", "title": "tên khách hàng", 'width': '150px' },
-                { "data": "NSinh", "title": "ngày sinh", 'width': '50px', render: (data, type, full, meta) => { return (data != null ? ddMMyyyy(data) : '') } },
-                { "data": "GTinh", "title": "giới tính", 'width': '30px', render: (data, type, full, meta) => { return (data ? '<i class="fa fa-male col-blue fa-2x"></i>' : '<i class="fa fa-female col-pink fa-2x"></i>') } },
-                { "data": "DThoai", "title": "điện thoại", 'width': '70px' },
-                { "data": "DChi", "title": "địa chỉ", 'width': '300px' },
-                { "data": "Note", "title": "Ghi chú", 'width': 'calc(100% - 700px)', className: 'tb-Receipt-note' },
-                {
-                    'className': 'table-edit-delete-col',
-                    "orderable": false,
-                    "render": function (data, type, full, meta) {
-                        return `<i class='fa fa-edit col-blue fa-lg pointer' onClick="Edit(${full.Id})"></i> <i class='fa fa-trash col-red fa-lg pointer' onClick="Delete(${full.Id})"></i>`;
-                    }
-                }]
-        });
-        $('#kh-table_wrapper #kh-table_filter').append($('<label><i class="fa fa-file-excel-o fa-lg col-red pointer" title="xuất excel" aria-hidden="true"></i></label>'));
-    }
-
-    function Save() {
-        if (IsValid()) {
-            var transObj = {
-                Id: Global.Data.selectedObj.Id,
-                Ma: $('#code').val(),
-                Ten: $('#name').val(),
-                NSinh: moment($('#ngaysinh').val(), ''),
-                GTinh: $('#gioitinh').val() == '0' ? false : true,
-                DThoai: $('#phone').val(),
-                DChi: $('#address').val(),
-                TPho: $('#tinh-thanhpho').val(),
-                Huyen: $('#quan-huyen').val(),
-                Phuong: $('#phuong').val(),
-                JobId: $('#jobid').val(),
-                Note: $('#note').val()
-            }
-            $.ajax({
-                url: Global.UrlAction.Save,
-                type: 'POST',
-                data: JSON.stringify(transObj),
-                contentType: 'application/json charset=utf-8',
-                // beforeSend: function () { $('.progress').removeClass('hide'); },
-                success: function (response) {
-                    //  $('.progress').addClass('hide');
-                    if (response.IsSuccess) {
-                        Gets();
-                        $('#btCancel').click();
-                    }
-                    //window.location.href = '/Receipt/Index';
-                    else
-                        swal("Lỗi nhập liệu", response.sms);
-                }
-            });
-        }
+        $('#Km').focus(() => { $('#Km').select() });
     }
 
     function IsValid() {
@@ -314,58 +158,8 @@ HMS.Receipt = function () {
         }
     }
 
-    function Bind(obj) {
-        $('#tinh-thanhpho').val(obj.TPho);
-        Global.Data.HuyenValue = obj.Huyen;
-        $('#ngaysinh').val(moment(obj.NSinh).format('DD/MM/YYYY'));
-        $('#name').val(obj.Ten);
-        $('#gioitinh').val(obj.GTinh ? '1' : '0');
-        $('#phone').val(obj.DThoai);
-        $('#address').val(obj.DChi);
-        $('#phuong').val(obj.Phuong);
-        $('#note').val(obj.Note);
-        $('#jobid').val(obj.JobId);
-        $('#code').val(obj.Ma);
-        $('#tinh-thanhpho').change();
+    disabledInfo = () => {
+        $('#kh-info input,#kh-info select,#kh-info textarea').prop('disabled', true);
         RefreshControls();
-        //Textarea auto growth
-        autosize($('textarea.auto-growth'));
-    }
-
-    SavePhieu = () => {
-        if (IsValid()) {
-            var transObj = {
-                SoPhieu: $('#sophieu').val(),
-                MaKH: $('#code').val(),
-                ModelId: $('#model').val(),
-                Ngay: moment($('#ngaytao').val(), ''),
-                SoKhung: $('#sokhung').val(),
-                SoMay: $('#somay').val(),
-                BienSo: $('#bienso').val(),
-                Km: parseInt($('#km').val()),
-
-                yeucau: parseFloat($('#giaban').val()),
-                nhanxet: parseFloat($('#chietkhau').val()),
-                trangthai: parseFloat($('#chietkhau').val()),
-                Note: $('#note').val()
-            }
-            $.ajax({
-                url: Global.UrlAction.SavePhieu,
-                type: 'POST',
-                data: JSON.stringify(transObj),
-                contentType: 'application/json charset=utf-8',
-                // beforeSend: function () { $('.progress').removeClass('hide'); },
-                success: function (response) {
-                    //  $('.progress').addClass('hide');
-                    if (response.IsSuccess) {
-                        Gets();
-                        $('#btCancel').click();
-                    }
-                    //window.location.href = '/BanHang/Index';
-                    else
-                        swal("Lỗi nhập liệu", response.sms);
-                }
-            });
-        }
     }
 }

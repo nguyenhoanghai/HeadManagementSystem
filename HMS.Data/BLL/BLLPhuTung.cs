@@ -51,7 +51,7 @@ namespace HMS.Data.BLL
         {
             using (var db = new HMSEntities(connectString))
             {
-                return db.H_PhuTung.Where(x => !x.IsDeleted).Select(x => new ModelSelectItem() { Id = x.Id, Code = x.Code, Name = x.Name, Data = x.Quantities, Data1 = x.Price_In, Data2 = x.Price_Out }).ToList();
+                return db.H_PhuTung.Where(x => !x.IsDeleted).Select(x => new ModelSelectItem() { Id = x.Id, Code = x.Code, Name = x.Name, Data = x.Quantities, _double = x.Price_In, _double1 = x.Price_Out }).ToList();
             }
         }
 

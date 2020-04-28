@@ -18,5 +18,8 @@ namespace HMS.Data.Model
         public dynamic Data3 { get; set; }
         public dynamic Data4 { get; set; }
         public dynamic Data5 { get; set; }
+        public double _double  { get; set; } 
+        public double _double1  { get; set; } 
+        public double _double2  { get; set; }
     }
 }

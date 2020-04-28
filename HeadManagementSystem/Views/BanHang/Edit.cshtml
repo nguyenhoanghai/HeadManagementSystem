@@ -1,0 +1,172 @@
+﻿@model HMS.Data.Model.SellReceiptModel
+@using HMS.Data.Model
+@{
+    ViewBag.Title = "Cập nhật";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var models = ViewBag.Models as List<ModelSelectItem>;
+    var nhanviens = ViewBag.Nhanviens as List<ModelSelectItem>;
+    var loaiXes = ViewBag.LoaiXes as List<ModelSelectItem>;
+}
+
+@using (Html.BeginForm("Edit", "banhang", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "frmReceipt", onkeydown = "return event.keyCode!=13" }))
+{
+    <div class="row clearfix p-r-0 p-l-0">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6  ">
+            <div class="card m-b-10">
+                <div class="header bg-teal">
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-6">
+                            <h2>Thông tin phiếu dịch vụ | @Model.SoPhieu</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="body  masked-input">
+                    @Html.HiddenFor(x => x.Id)
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Ngày mở: </label>
+                            <label class="col-pink ">@Model.Ngay.ToShortDateString()</label>
+                            @Html.HiddenFor(x => x.Ngay)
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Số phiếu: </label>
+                            <label class=" ">@(Model.SoPhieu )</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Khách hàng: </label>
+                            <label class=" ">@Model.Ma (@Model.Ten)</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                        <div class="form-group form-float">
+                            <label class=" ">Điện thoại: </label>
+                            <label class=" ">@Model.DThoai </label>
+                        </div>
+                    </div>
+                    <div class="line" style="margin-bottom:20px"></div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                        <div class="form-group form-float form-select">
+                            <label class="label-select">Nhân viên tư vấn</label>
+                            <select class="form-control show-tick select tuvanid" data-live-search="true" name="TuVanId">
+                                @if (nhanviens != null)
+                                {
+                                    for (int i = 0; i < nhanviens.Count; i++)
+                                    {
+                                        <option value="@nhanviens[i].Id">@nhanviens[i].Code - @nhanviens[i].Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                        <div class="form-group form-float form-select">
+                            <label class="label-select">Model xe</label>
+                            <select class="form-control show-tick select modelid" data-live-search="true" name="ModelId">
+                                @if (models != null)
+                                {
+                                    for (int i = 0; i < models.Count; i++)
+                                    {
+                                        <option value="@models[i].Id">@models[i].Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <div class="form-group form-float form-select">
+                            <div class="label-select">Loại xe</div>
+                            <select class="form-control show-tick select workTypeId" data-live-search="true" name="WorkTypeId">
+                                @if (loaiXes != null)
+                                {
+                                    for (int i = 0; i < loaiXes.Count; i++)
+                                    {
+                                        <option value="@loaiXes[i].Id">@loaiXes[i].Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                @Html.EditorFor(m => m.SoMay, new { htmlAttributes = new { @class = " form-control" } })
+                                <label class="form-label">Số máy</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                @Html.EditorFor(m => m.SoKhung, new { htmlAttributes = new { @class = " form-control" } })
+                                <label class="form-label">Số khung</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-4">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                @Html.EditorFor(m => m.SoBaoHanh, new { htmlAttributes = new { @class = " form-control" } })
+                                <label class="form-label">Số bảo hành</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-4">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="number" class="form-control  giaban" name="GiaBan" />
+                                <label class="form-label">Giá bán</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-4">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="number" class="form-control chietkhau " name="ChietKhau" value="0" />
+                                <label class="form-label">Chiết khấu (%)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-4">
+                        <div class="form-group form-float">
+                            <div class="form-line focused">
+                                <label class="form-control fake-input thanhtien">0</label>
+                                <label class="form-label">Thành tiền</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                @Html.TextAreaFor(m => m.GhiChu, new { @class = "no-resize auto-growth  form-control", @rows = "1" })
+                                <label class="form-label">Ghi chú</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right padding-0">
+                        <button type="button" class="btn btn-primary m-b-5 m-t-5" id="btClose">Đóng phiếu</button>
+                        <button type="button" class="btn btn-primary m-b-5 m-t-5 btnSave">Cập nhật </button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>         
+        <div class="clearfix"></div>
+    </div>
+}
+    <script src="~/Scripts/HMS/p-bh-edit.js"></script>
+<script>
+    var obj = new HMS.BanHangEdit();
+    obj.GetGlobal().Data.TVId = parseInt('@Model.TuVanId');
+    obj.GetGlobal().Data.modelId = parseInt('@Model.ModelId');
+    obj.GetGlobal().Data.typeId = parseInt('@Model.WorkTypeId');
+    obj.GetGlobal().Data.gia = parseFloat('@Model.GiaBan');
+    obj.GetGlobal().Data.discount = parseFloat('@Model.ChietKhau');
+    obj.Init();
+ 
+</script>

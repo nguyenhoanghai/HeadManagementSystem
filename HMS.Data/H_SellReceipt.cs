@@ -14,6 +14,11 @@ namespace HMS.Data
     
     public partial class H_SellReceipt
     {
+        public H_SellReceipt()
+        {
+            this.H_Receiption = new HashSet<H_Receiption>();
+        }
+    
         public int Id { get; set; }
         public int KHId { get; set; }
         public int ModelId { get; set; }
@@ -28,9 +33,14 @@ namespace HMS.Data
         public string Note { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
+        public int WorkTypeId { get; set; }
+        public int Index { get; set; }
+        public string GuaranteeNumber { get; set; }
     
         public virtual H_KhachHang H_KhachHang { get; set; }
         public virtual H_Model H_Model { get; set; }
         public virtual H_NhanVien H_NhanVien { get; set; }
+        public virtual H_WorkType H_WorkType { get; set; }
+        public virtual ICollection<H_Receiption> H_Receiption { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace HMS.Data
         public H_PhuTung()
         {
             this.H_Receipt_PT = new HashSet<H_Receipt_PT>();
+            this.H_NhapPT = new HashSet<H_NhapPT>();
         }
     
         public int Id { get; set; }
@@ -29,5 +30,6 @@ namespace HMS.Data
         public bool IsDeleted { get; set; }
     
         public virtual ICollection<H_Receipt_PT> H_Receipt_PT { get; set; }
+        public virtual ICollection<H_NhapPT> H_NhapPT { get; set; }
     }
 }

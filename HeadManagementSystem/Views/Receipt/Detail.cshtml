@@ -1,0 +1,224 @@
+﻿@using HMS.Data.Model
+@model HMS.Data.Model.PhieuEditModel
+@{
+    ViewBag.Title = "Thông tin phiếu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var works = (ViewBag.Works as List<ModelSelectItem>); 
+}
+
+<div class="row clearfix p-r-0 p-l-0">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6  ">
+        <div class="card m-b-10">
+            <div class="header bg-teal">
+                <div class="row clearfix">
+                    <div class="col-xs-12 col-sm-6">
+                        <h2>Thông tin phiếu dịch vụ | @Model.SoPhieu</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="body  masked-input">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Ngày mở: </label>
+                        <label class="col-pink">@Model.Ngay.ToString("dd/MM/yyyy H:m ")</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Ngày đóng: </label>
+                        <label class="col-pink ">@(Model.NgayDong != null ? Model.NgayDong.Value.ToString("dd/MM/yyyy H:m ") : "")</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Số phiếu: </label>
+                        <label class=" ">@(Model.SoPhieu )</label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Khách hàng: </label>
+                        <label class=" ">@Model.KHCode (@Model.KHName)</label>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Model xe: </label>
+                        <label class=" ">@Model.Model</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Loại xe: </label>
+                        <label class=" ">@Model.LoaiXe</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Biển số xe: </label>
+                        <label class=" ">@Model.BienSo</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Số khung: </label>
+                        <label class=" ">@Model.SoKhung</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Số máy: </label>
+                        <label class=" ">@Model.SoMay</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Km hiện tại: </label>
+                        <label class=" ">@Model.Km</label>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Ngày sửa xe: </label>
+                        <label class="col-pink">@(Model.NgaySua != null ? Model.NgaySua.ToString("dd/MM/yyyy") : "")</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Kĩ thuật đăng ký: </label>
+                        <label class=" ">@(Model.KTDKyId != null ? Model.KTDKyName : "")</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Nhân viên sửa xe: </label>
+                        <label class=" ">@(Model.SuaXeId != null ? Model.SuaXeName : "")</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Nhân viên tiếp nhận: </label>
+                        <label class=" ">@(Model.TiepNhanId != null ? Model.TiepNhanName : "")</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Nhân viên thu ngân: </label>
+                        <label class=" ">@(Model.ThuNganId != null ? Model.ThuNganName : "")</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Nhân viên kiểm tra cuối: </label>
+                        <label class=" ">@(Model.KTraCuoiId != null ? Model.KTraCuoiName : "")</label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Yêu cầu khách hàng: </label>
+                        <label class=" ">@(Model.YeuCau)</label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Kỹ thuật nhận xét: </label>
+                        <label class=" ">@(Model.NhanXet)</label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Tình trạng xe trước sửa chữa: </label>
+                        <label class=" ">@(Model.TrangThai)</label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Ghi chú: </label>
+                        <label class=" ">@(Model.GhiChu)</label>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6  ">
+        <div class="card m-b-10">
+            <div class="header bg-teal">
+                <div class="row clearfix">
+                    <div class="col-xs-12 col-sm-6">
+                        <h2>Thông tin dịch vụ</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="body  masked-input insert-here">
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Tiền công: </label>
+                        <label id="total_dv" class=" col-red bold">@Model.TongCong</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Tiền phụ tùng: </label>
+                        <label id="total_pt" class="col-red bold ">@Model.TongPT</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 m-b-0">
+                    <div class="form-group form-float">
+                        <label class=" ">Tổng tiền: </label>
+                        <label class="col-red bold" id="total">@Model.Tong</label>
+                    </div>
+                </div>
+                <table class="table table-bordered table-striped table-hover tb-dichvu  ">
+                    <caption class="add-box-title">Danh sách dịch vụ  </caption>
+                    <thead>
+                        <tr>
+                            <th style="width:120px">Mã dịch vụ</th>
+                            <th>Tên dịch vụ</th>
+                            <th>Giá</th>
+                            <th style="width:50px">Chiết khấu (%)</th>
+                            <th style="width:80px">Giá sau chiết khấu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.DichVus != null && Model.DichVus.Count > 0)
+                        {
+                            foreach (var item in Model.DichVus)
+                            {
+                                <tr>
+                                    <td>@item.DVCode</td>
+                                    <td>@item.DVName</td>
+                                    <td>@item.GiaBan</td>
+                                    <td>@item.CKhau</td>
+                                    <td>@item.GiaCK</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+
+                <table class="table table-bordered table-striped table-hover ">
+                    <caption class="add-box-title">Danh sách phụ tùng  </caption>
+                    <thead>
+                        <tr>
+                            <th style="max-width:150px">Mã dịch vụ</th>
+                            <th>Tên dịch vụ</th>
+                            <th>Giá</th>
+                            <th style="max-width:50px">Chiết khấu (%)</th>
+                            <th>Giá sau chiết khấu</th>
+                            <th style="max-width:30px"></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+

@@ -56,29 +56,7 @@ HMS.BanHang = function () {
         });
     }
 
-    this.Edit = function (Id) {
-        $('#btSave').show();
-        $('#btAdd').hide();
-        Global.Data.selectedObj = $.map(Global.Data.BanHangXe, function (item, i) {
-            if (item.Id == Id)
-                return item;
-        })[0];
-        $('#tinh-thanhpho').val(Global.Data.selectedObj.TPho);
-        Global.Data.HuyenValue = Global.Data.selectedObj.Huyen;
-        $('#ngaysinh').val(moment(Global.Data.selectedObj.NSinh).format('DD/MM/YYYY'));
-        $('#name').val(Global.Data.selectedObj.Ten);
-        $('#gioitinh').val(Global.Data.selectedObj.GTinh ? '1' : '0');
-        $('#phone').val(Global.Data.selectedObj.DThoai);
-        $('#address').val(Global.Data.selectedObj.DChi);
-        $('#phuong').val(Global.Data.selectedObj.Phuong);
-        $('#note').val(Global.Data.selectedObj.Note);
-        $('#jobid').val(Global.Data.selectedObj.JobId);
-        $('#code').val(Global.Data.selectedObj.Ma);
-        $('#tinh-thanhpho').change();
-        RefreshControls();
-        //Textarea auto growth
-        autosize($('textarea.auto-growth'));
-    }
+    this.DisabledInfo = () => { disabledInfo(); }
 
     this.Init = function () {
         RegisterEvent();
@@ -89,9 +67,7 @@ HMS.BanHang = function () {
             $('#tinh-thanhpho').append('<option value="' + item.name + '" ' + (Global.Data.defaultTinh == item.name ? 'selected' : '') + ' >' + item.name + '</option>');
         });
         $('#tinh-thanhpho').change();
-
-        Gets();
-        $('#btSave').hide();
+         
         RefreshControls();
         //Textarea auto growth
         autosize($('textarea.auto-growth'));
@@ -111,171 +87,29 @@ HMS.BanHang = function () {
                     });
                 }
             });
-            //refresh lai select box
-            var inter = setInterval(function () {
-                $('#quan-huyen').selectpicker();
-                clearInterval(inter);
-            }, 1000);
-        });
-        $('#btSave').click(function () {
-            Save();
+            $('#quan-huyen').selectpicker();
         });
 
-        $('#btCancel').click(function () {
-            $('#name').val('');
-            $('#note').val('');
-            $('#BanHang-type').val('');
-            $('#code').val('');
-            $('#phone').val('');
-            $('#acc').val('');
-            $('#pass').val('');
-            $('#address').val('');
-            $('#jobid').val('');
-            $('#btSave').hide();
-            $('#btAdd').show();
-            $('#acc').prop('disabled', false);
-            $('#pass').prop('disabled', false);
-            Global.Data.selectedObj = { Id: 0 };
-            Global.Data.HuyenValue = '';
-            RefreshControls();
-            $('.err-name').empty();
-            $('textarea.auto-growth').css('height', '34px');
+        $('.chietkhau,.giaban').change(() => { tinhChietKhau(); });
+
+        $('.btnSave').click(function () {
+            $('input,select').prop('disabled', false);
+          $('#frmReceipt').submit();
         });
 
-        $('#btAdd').click(function () {
-            Save();
-        });
-
-        $("#BanHang-type").on("changed.bs.select",
-            function (e, clickedIndex, newValue, oldValue) {
-                var inter = setInterval(function () {
-                    clearInterval(inter);
-                    RefreshControls();
-                }, 500);
-            });
-
-        $('.btn-find').click(() => { findKH(); });
-        $('#chietkhau,#giaban').change(() => { tinhChietKhau(); });
-
-        $('#btAddPhieu').click(function () { SavePhieu(); });
+        $('.btn-find').click(() => { window.location.href = ('/banhang/Create?ma=' + $('#code').val()); });
     }
 
     tinhChietKhau = () => {
-        if ($('#chietkhau').val() != '' && $('#giaban').val() != '') {
-            var ck = parseFloat($('#chietkhau').val());
-            var gb = parseFloat($('#giaban').val());
+        if ($('.chietkhau').val() != '' && $('.giaban').val() != '') {
+            var ck = parseFloat($('.chietkhau').val());
+            var gb = parseFloat($('.giaban').val());
             if (ck > 0) {
                 var giack = (gb * ck) / 100;
-                $('#thanhtien').html((gb - giack).toFixed(1).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' vnđ')
+                $('.thanhtien').html((gb - giack).toFixed(1).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' vnđ')
             }
             else
-                $('#thanhtien').html((gb).toFixed(1).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' vnđ')
-        }
-    }
-
-    function Delete(Id) {
-        $.ajax({
-            url: Global.UrlAction.Delete,
-            type: 'POST',
-            data: JSON.stringify({ 'Id': Id }),
-            contentType: 'application/json charset=utf-8',
-            // beforeSend: function () { $('.progress').removeClass('hide'); },
-            success: function (response) {
-                // $('.progress').addClass('hide');
-                if (response.success) {
-                    Gets();
-                }
-                else
-                    swal("Lỗi", response.responseText, "error");
-            }
-        });
-    }
-
-    function Gets() {
-        $.ajax({
-            url: Global.UrlAction.Gets,
-            type: 'POST',
-            data: null,
-            contentType: 'application/json charset=utf-8',
-            beforeSend: function () { $('.progress').removeClass('hide'); },
-            success: function (objs) {
-                $('.progress').addClass('hide');
-                if (Global.Data.table != null) {
-                    Global.Data.table.destroy();
-                    $('#kh-table').empty();
-                    Global.Data.table = null;
-                    Global.Data.BanHangXe.length = 0;
-                }
-                Global.Data.BanHangXe = objs;
-                InitTable(objs);
-            }
-        });
-    }
-
-    function InitTable(Objs) {
-        Global.Data.table = $('#kh-table').DataTable({
-            responsive: true,
-            "data": Objs,
-            "dom": '<"top"<"col-sm-3 m-b-0 p-l-0"l><"col-sm-9 m-b-0"f><"clear">>rt<"bottom"<"col-sm-6 p-l-0"i><"col-sm-6 m-b-0"p><"clear">><"clear">',
-            "oLanguage": {
-                "sSearch": "Bộ lọc",
-                "sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
-                "sInfo": "Hiển thị từ _START_ - _END_ trong _TOTAL_ dòng",
-                'paginate': {
-                    'previous': '<span class="prev-icon"></span>',
-                    'next': '<span class="next-icon"></span>'
-                }
-            },
-            "columns": [
-                { "orderable": true, "data": "Ma", "title": "Mã khách hàng", 'width': '100px' },
-                { "data": "Ten", "title": "tên khách hàng", 'width': '150px' },
-                { "data": "NSinh", "title": "ngày sinh", 'width': '50px', render: (data, type, full, meta) => { return (data != null ? ddMMyyyy(data) : '') } },
-                { "data": "GTinh", "title": "giới tính", 'width': '30px', render: (data, type, full, meta) => { return (data ? '<i class="fa fa-male col-blue fa-2x"></i>' : '<i class="fa fa-female col-pink fa-2x"></i>') } },
-                { "data": "DThoai", "title": "điện thoại", 'width': '70px' },
-                { "data": "DChi", "title": "địa chỉ", 'width': '300px' },
-                { "data": "Note", "title": "Ghi chú", 'width': 'calc(100% - 700px)', className: 'tb-BanHang-note' },
-                {
-                    'className': 'table-edit-delete-col',
-                    "orderable": false,
-                    "render": function (data, type, full, meta) {
-                        return `<i class='fa fa-edit col-blue fa-lg pointer' onClick="Edit(${full.Id})"></i> <i class='fa fa-trash col-red fa-lg pointer' onClick="Delete(${full.Id})"></i>`;
-                    }
-                }]
-        });
-        $('#kh-table_wrapper #kh-table_filter').append($('<label><i class="fa fa-file-excel-o fa-lg col-red pointer" title="xuất excel" aria-hidden="true"></i></label>'));
-    }
-
-    function Save() {
-        if (IsValid()) {
-            var transObj = {
-                Ma: $('#code').val(),
-                Ten: $('#name').val(),
-                NSinh: moment($('#ngaysinh').val(), ''),
-                GTinh: $('#gioitinh').val() == '0' ? false : true,
-                DThoai: $('#phone').val(),
-                DChi: $('#address').val(),
-                TPho: $('#tinh-thanhpho').val(),
-                Huyen: $('#quan-huyen').val(),
-                Phuong: $('#phuong').val(),
-                JobId: $('#jobid').val(),
-                Note: $('#note').val()
-            }
-            $.ajax({
-                url: Global.UrlAction.SaveKH,
-                type: 'POST',
-                data: JSON.stringify(transObj),
-                contentType: 'application/json charset=utf-8',
-                // beforeSend: function () { $('.progress').removeClass('hide'); },
-                success: function (response) {
-                    //  $('.progress').addClass('hide');
-                    if (response.IsSuccess) {
-                        swal("Thông báo", 'Tạo khách hàng thành công.!');
-                    }
-                    //window.location.href = '/BanHang/Index';
-                    else
-                        swal("Lỗi nhập liệu", response.sms);
-                }
-            });
+                $('.thanhtien').html((gb).toFixed(1).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' vnđ')
         }
     }
 
@@ -293,74 +127,8 @@ HMS.BanHang = function () {
         return error > 0 ? false : true;
     }
 
-    findKH = () => {
-        if ($('#code').val() != '') {
-            $.ajax({
-                url: Global.UrlAction.Find,
-                type: 'POST',
-                data: JSON.stringify({ 'data': $('#code').val() }),
-                contentType: 'application/json charset=utf-8',
-                // beforeSend: function () { $('.progress').removeClass('hide'); },
-                success: function (obj) {
-                    if (obj)
-                        Bind(obj);
-                    else
-                        swal("Thông báo", "Không tìn thấy khách hàng trong hệ thống.!");
-                }
-            });
-        }
-    }
-
-    function Bind(obj) {
-        $('#tinh-thanhpho').val(obj.TPho);
-        Global.Data.HuyenValue = obj.Huyen;
-        $('#ngaysinh').val(moment(obj.NSinh).format('DD/MM/YYYY'));
-        $('#name').val(obj.Ten);
-        $('#gioitinh').val(obj.GTinh ? '1' : '0');
-        $('#phone').val(obj.DThoai);
-        $('#address').val(obj.DChi);
-        $('#phuong').val(obj.Phuong);
-        $('#note').val(obj.Note);
-        $('#jobid').val(obj.JobId);
-        $('#code').val(obj.Ma);
-        $('#tinh-thanhpho').change();
+    disabledInfo = () => {
+        $('#kh-info input,#kh-info select,#kh-info textarea').prop('disabled', true);
         RefreshControls();
-        //Textarea auto growth
-        autosize($('textarea.auto-growth'));
-    }
-
-    SavePhieu = () => {
-        if (IsValid()) {
-            var transObj = {
-                SoPhieu: $('#sophieu').val(),
-                MaKH: $('#code').val(),
-                ModelId: $('#model').val(),
-                Ngay: moment($('#ngaytao').val(), ''),
-                TuVanId: $('#tuvan').val(),
-                SoKhung: $('#sokhung').val(),
-                SoMay: $('#somay').val(),
-                BienSo: $('#bienso').val(),
-                GiaBan: parseFloat($('#giaban').val()),
-                ChietKhau: parseFloat($('#chietkhau').val()),
-                Note: $('#note').val()
-            }
-            $.ajax({
-                url: Global.UrlAction.SavePhieu,
-                type: 'POST',
-                data: JSON.stringify(transObj),
-                contentType: 'application/json charset=utf-8',
-                // beforeSend: function () { $('.progress').removeClass('hide'); },
-                success: function (response) {
-                    //  $('.progress').addClass('hide');
-                    if (response.IsSuccess) {
-                        Gets();
-                        $('#btCancel').click();
-                    }
-                    //window.location.href = '/BanHang/Index';
-                    else
-                        swal("Lỗi nhập liệu", response.sms);
-                }
-            });
-        }
     }
 }

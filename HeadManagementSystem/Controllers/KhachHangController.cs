@@ -2,6 +2,11 @@
 using HeadManagementSystem.Filter;
 using HMS.Data.BLL;
 using HMS.Data.Model;
+using QRCoder;
+using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Web.Mvc;
 
 namespace HeadManagementSystem.Controllers
@@ -50,6 +55,28 @@ namespace HeadManagementSystem.Controllers
             return Json("");
         }
 
-        
+        public ActionResult Detail(int id)
+        {
+            string conn = App_Global.AppGlobal.Connectionstring;
+            var kh = BLLKhachHang.Instance.Get(conn, id);
+            if (kh == null)
+                return RedirectToAction("Page404", "Error");
+            ViewBag.DichVus = BLLReceipt.Instance.KhachHangPhieus(conn, id);
+            ViewBag.Muas = BLLSellReceipt.Instance.KhachHangPhieus(conn, id);
+
+            QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+            QRCodeData qRData = qRCodeGenerator.CreateQrCode(kh.Ma, QRCodeGenerator.ECCLevel.M);
+            QRCode qRCode = new QRCode(qRData);
+            using (Bitmap bitmap = qRCode.GetGraphic(250))
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    bitmap.Save(memoryStream, ImageFormat.Png);
+                    ViewBag.ImageUrl = "data:image/png;base64," + Convert.ToBase64String(memoryStream.ToArray());
+                }
+            }
+            return View(kh);
+        }
+
     }
 }

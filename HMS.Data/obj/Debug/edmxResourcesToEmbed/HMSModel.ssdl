@@ -31,8 +31,6 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Index" Type="int" Nullable="false" />
-    <Property Name="ModelId" Type="int" />
     <Property Name="Code" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="Gender" Type="bit" Nullable="false" />
@@ -44,10 +42,6 @@
     <Property Name="City" Type="nvarchar" MaxLength="500" />
     <Property Name="JobId" Type="int" />
     <Property Name="Note" Type="nvarchar(max)" />
-    <Property Name="MachineNumber" Type="varchar" MaxLength="50" />
-    <Property Name="ChassisNumber" Type="varchar" MaxLength="50" />
-    <Property Name="LicenseNumber" Type="varchar" MaxLength="50" />
-    <Property Name="Km" Type="int" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="H_LoaiNhanVien">
@@ -91,6 +85,22 @@
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="Index" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="H_NhapPT">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PTId" Type="int" Nullable="false" />
+    <Property Name="MaLo" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Quantities" Type="int" Nullable="false" />
+    <Property Name="Price_In" Type="float" Nullable="false" />
+    <Property Name="Price_Out" Type="float" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="H_PhuTung">
     <Key>
       <PropertyRef Name="Id" />
@@ -104,29 +114,17 @@
     <Property Name="Note" Type="nvarchar(max)" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="H_Receipt">
+  <EntityType Name="H_Receipt_DichVu">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="KHId" Type="int" Nullable="false" />
-    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-    <Property Name="ClosedDate" Type="datetime" />
-    <Property Name="Code" Type="nvarchar" MaxLength="250" Nullable="false" />
-    <Property Name="NV_TiepNhan" Type="int" />
-    <Property Name="NV_SuaXe" Type="int" />
-    <Property Name="NV_ThuNgan" Type="int" />
-    <Property Name="NV_KTTruong" Type="int" />
-    <Property Name="NV_KTCuoi" Type="int" />
-    <Property Name="Required" Type="nvarchar" MaxLength="500" />
-    <Property Name="CheckResult" Type="nvarchar" MaxLength="500" />
-    <Property Name="StatusBefore" Type="nvarchar" MaxLength="500" />
-    <Property Name="QMSNumber" Type="int" Nullable="false" />
-    <Property Name="Old_Km" Type="int" Nullable="false" />
-    <Property Name="New_Km" Type="int" Nullable="false" />
-    <Property Name="Total" Type="float" Nullable="false" />
-    <Property Name="Total_Cong" Type="float" Nullable="false" />
-    <Property Name="Total_PTung" Type="float" Nullable="false" />
+    <Property Name="ReceiptId" Type="int" Nullable="false" />
+    <Property Name="DichVuId" Type="int" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Percent" Type="float" Nullable="false" />
+    <Property Name="PricePercent" Type="float" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="H_Receipt_PT">
@@ -144,18 +142,42 @@
     <Property Name="Total" Type="float" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="H_Receipt_Work">
+  <EntityType Name="H_Receiption">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ReceiptId" Type="int" Nullable="false" />
-    <Property Name="WorkId" Type="int" Nullable="false" />
-    <Property Name="Index" Type="int" Nullable="false" />
-    <Property Name="Price" Type="float" Nullable="false" />
-    <Property Name="Percent" Type="float" Nullable="false" />
-    <Property Name="PricePercent" Type="float" Nullable="false" />
+    <Property Name="SellReceiptId" Type="int" />
+    <Property Name="KHId" Type="int" Nullable="false" />
+    <Property Name="WorkTypeId" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="NV_TiepNhan" Type="int" />
+    <Property Name="NV_SuaXe" Type="int" />
+    <Property Name="NV_ThuNgan" Type="int" />
+    <Property Name="NV_KTTruong" Type="int" />
+    <Property Name="NV_KTCuoi" Type="int" />
+    <Property Name="Required" Type="nvarchar" MaxLength="500" />
+    <Property Name="CheckResult" Type="nvarchar" MaxLength="500" />
+    <Property Name="StatusBefore" Type="nvarchar" MaxLength="500" />
+    <Property Name="QMSServiceId" Type="int" Nullable="false" />
+    <Property Name="QMSNumber" Type="int" Nullable="false" />
+    <Property Name="Old_Km" Type="int" Nullable="false" />
+    <Property Name="New_Km" Type="int" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+    <Property Name="SL_PT" Type="int" Nullable="false" />
+    <Property Name="Total_NhapPT" Type="float" Nullable="false" />
+    <Property Name="Total_Cong" Type="float" Nullable="false" />
+    <Property Name="Total_PTung" Type="float" Nullable="false" />
+    <Property Name="ModelId" Type="int" />
+    <Property Name="MachineNumber" Type="varchar" MaxLength="50" />
+    <Property Name="ChassisNumber" Type="varchar" MaxLength="50" />
+    <Property Name="LicenseNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="ClosedDate" Type="datetime" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="H_SellReceipt">
     <Key>
@@ -175,6 +197,9 @@
     <Property Name="Note" Type="nvarchar(max)" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="WorkTypeId" Type="int" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="GuaranteeNumber" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="H_Work">
     <Key>
@@ -230,18 +255,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_H_KhachHang_H_Model">
-    <End Role="H_Model" Type="Self.H_Model" Multiplicity="0..1" />
-    <End Role="H_KhachHang" Type="Self.H_KhachHang" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="H_Model">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="H_KhachHang">
-        <PropertyRef Name="ModelId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_H_KhachHang_H_NgheNghiep">
     <End Role="H_NgheNghiep" Type="Self.H_NgheNghiep" Multiplicity="0..1" />
     <End Role="H_KhachHang" Type="Self.H_KhachHang" Multiplicity="*" />
@@ -266,79 +279,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_H_Receipt_H_KhachHang">
-    <End Role="H_KhachHang" Type="Self.H_KhachHang" Multiplicity="1" />
-    <End Role="H_Receipt" Type="Self.H_Receipt" Multiplicity="*" />
+  <Association Name="FK_H_NhapPT_H_PhuTung">
+    <End Role="H_PhuTung" Type="Self.H_PhuTung" Multiplicity="1" />
+    <End Role="H_NhapPT" Type="Self.H_NhapPT" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="H_KhachHang">
+      <Principal Role="H_PhuTung">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="H_Receipt">
-        <PropertyRef Name="KHId" />
+      <Dependent Role="H_NhapPT">
+        <PropertyRef Name="PTId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_H_Receipt_H_NhanVien">
-    <End Role="H_NhanVien" Type="Self.H_NhanVien" Multiplicity="0..1" />
-    <End Role="H_Receipt" Type="Self.H_Receipt" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="H_NhanVien">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="H_Receipt">
-        <PropertyRef Name="NV_KTCuoi" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_H_Receipt_H_NhanVien1">
-    <End Role="H_NhanVien" Type="Self.H_NhanVien" Multiplicity="0..1" />
-    <End Role="H_Receipt" Type="Self.H_Receipt" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="H_NhanVien">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="H_Receipt">
-        <PropertyRef Name="NV_KTTruong" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_H_Receipt_H_NhanVien2">
-    <End Role="H_NhanVien" Type="Self.H_NhanVien" Multiplicity="0..1" />
-    <End Role="H_Receipt" Type="Self.H_Receipt" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="H_NhanVien">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="H_Receipt">
-        <PropertyRef Name="NV_SuaXe" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_H_Receipt_H_NhanVien3">
-    <End Role="H_NhanVien" Type="Self.H_NhanVien" Multiplicity="0..1" />
-    <End Role="H_Receipt" Type="Self.H_Receipt" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="H_NhanVien">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="H_Receipt">
-        <PropertyRef Name="NV_ThuNgan" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_H_Receipt_H_NhanVien4">
-    <End Role="H_NhanVien" Type="Self.H_NhanVien" Multiplicity="0..1" />
-    <End Role="H_Receipt" Type="Self.H_Receipt" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="H_NhanVien">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="H_Receipt">
-        <PropertyRef Name="NV_TiepNhan" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_H_Receipt_PT_H_PhuTung1">
+  <Association Name="FK_H_Receipt_PT_H_PhuTung">
     <End Role="H_PhuTung" Type="Self.H_PhuTung" Multiplicity="1" />
     <End Role="H_Receipt_PT" Type="Self.H_Receipt_PT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -351,14 +304,146 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_H_Receipt_PT_H_Receipt">
-    <End Role="H_Receipt" Type="Self.H_Receipt" Multiplicity="1" />
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="1" />
     <End Role="H_Receipt_PT" Type="Self.H_Receipt_PT" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="H_Receipt">
+      <Principal Role="H_Receiption">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="H_Receipt_PT">
         <PropertyRef Name="ReceiptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receipt_Work_H_Receiption">
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="1" />
+    <End Role="H_Receipt_DichVu" Type="Self.H_Receipt_DichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_Receiption">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receipt_DichVu">
+        <PropertyRef Name="ReceiptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receipt_Work_H_Work">
+    <End Role="H_DichVu" Type="Self.H_DichVu" Multiplicity="1" />
+    <End Role="H_Receipt_DichVu" Type="Self.H_Receipt_DichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_DichVu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receipt_DichVu">
+        <PropertyRef Name="DichVuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receiption_H_KhachHang">
+    <End Role="H_KhachHang" Type="Self.H_KhachHang" Multiplicity="1" />
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_KhachHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receiption">
+        <PropertyRef Name="KHId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receiption_H_Model">
+    <End Role="H_Model" Type="Self.H_Model" Multiplicity="0..1" />
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_Model">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receiption">
+        <PropertyRef Name="ModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receiption_H_NhanVien">
+    <End Role="H_NhanVien" Type="Self.H_NhanVien" Multiplicity="0..1" />
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_NhanVien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receiption">
+        <PropertyRef Name="NV_TiepNhan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receiption_H_NhanVien1">
+    <End Role="H_NhanVien" Type="Self.H_NhanVien" Multiplicity="0..1" />
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_NhanVien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receiption">
+        <PropertyRef Name="NV_SuaXe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receiption_H_NhanVien2">
+    <End Role="H_NhanVien" Type="Self.H_NhanVien" Multiplicity="0..1" />
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_NhanVien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receiption">
+        <PropertyRef Name="NV_ThuNgan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receiption_H_NhanVien3">
+    <End Role="H_NhanVien" Type="Self.H_NhanVien" Multiplicity="0..1" />
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_NhanVien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receiption">
+        <PropertyRef Name="NV_KTTruong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receiption_H_NhanVien4">
+    <End Role="H_NhanVien" Type="Self.H_NhanVien" Multiplicity="0..1" />
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_NhanVien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receiption">
+        <PropertyRef Name="NV_KTCuoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receiption_H_SellReceipt">
+    <End Role="H_SellReceipt" Type="Self.H_SellReceipt" Multiplicity="0..1" />
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_SellReceipt">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receiption">
+        <PropertyRef Name="SellReceiptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_H_Receiption_H_WorkType">
+    <End Role="H_WorkType" Type="Self.H_WorkType" Multiplicity="1" />
+    <End Role="H_Receiption" Type="Self.H_Receiption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_WorkType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_Receiption">
+        <PropertyRef Name="WorkTypeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -398,6 +483,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_H_SellReceipt_H_WorkType">
+    <End Role="H_WorkType" Type="Self.H_WorkType" Multiplicity="1" />
+    <End Role="H_SellReceipt" Type="Self.H_SellReceipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="H_WorkType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="H_SellReceipt">
+        <PropertyRef Name="WorkTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="HMSModelStoreContainer">
     <EntitySet Name="H_Account" EntityType="Self.H_Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="H_DichVu" EntityType="Self.H_DichVu" Schema="dbo" store:Type="Tables" />
@@ -406,10 +503,11 @@
     <EntitySet Name="H_Model" EntityType="Self.H_Model" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="H_NgheNghiep" EntityType="Self.H_NgheNghiep" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="H_NhanVien" EntityType="Self.H_NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="H_NhapPT" EntityType="Self.H_NhapPT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="H_PhuTung" EntityType="Self.H_PhuTung" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="H_Receipt" EntityType="Self.H_Receipt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="H_Receipt_DichVu" EntityType="Self.H_Receipt_DichVu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="H_Receipt_PT" EntityType="Self.H_Receipt_PT" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="H_Receipt_Work" EntityType="Self.H_Receipt_Work" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="H_Receiption" EntityType="Self.H_Receiption" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="H_SellReceipt" EntityType="Self.H_SellReceipt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="H_Work" EntityType="Self.H_Work" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="H_WorkType" EntityType="Self.H_WorkType" Schema="dbo" store:Type="Tables" />
@@ -425,10 +523,6 @@
       <End Role="H_WorkType" EntitySet="H_WorkType" />
       <End Role="H_DichVu" EntitySet="H_DichVu" />
     </AssociationSet>
-    <AssociationSet Name="FK_H_KhachHang_H_Model" Association="Self.FK_H_KhachHang_H_Model">
-      <End Role="H_Model" EntitySet="H_Model" />
-      <End Role="H_KhachHang" EntitySet="H_KhachHang" />
-    </AssociationSet>
     <AssociationSet Name="FK_H_KhachHang_H_NgheNghiep" Association="Self.FK_H_KhachHang_H_NgheNghiep">
       <End Role="H_NgheNghiep" EntitySet="H_NgheNghiep" />
       <End Role="H_KhachHang" EntitySet="H_KhachHang" />
@@ -437,37 +531,61 @@
       <End Role="H_LoaiNhanVien" EntitySet="H_LoaiNhanVien" />
       <End Role="H_NhanVien" EntitySet="H_NhanVien" />
     </AssociationSet>
-    <AssociationSet Name="FK_H_Receipt_H_KhachHang" Association="Self.FK_H_Receipt_H_KhachHang">
-      <End Role="H_KhachHang" EntitySet="H_KhachHang" />
-      <End Role="H_Receipt" EntitySet="H_Receipt" />
+    <AssociationSet Name="FK_H_NhapPT_H_PhuTung" Association="Self.FK_H_NhapPT_H_PhuTung">
+      <End Role="H_PhuTung" EntitySet="H_PhuTung" />
+      <End Role="H_NhapPT" EntitySet="H_NhapPT" />
     </AssociationSet>
-    <AssociationSet Name="FK_H_Receipt_H_NhanVien" Association="Self.FK_H_Receipt_H_NhanVien">
-      <End Role="H_NhanVien" EntitySet="H_NhanVien" />
-      <End Role="H_Receipt" EntitySet="H_Receipt" />
-    </AssociationSet>
-    <AssociationSet Name="FK_H_Receipt_H_NhanVien1" Association="Self.FK_H_Receipt_H_NhanVien1">
-      <End Role="H_NhanVien" EntitySet="H_NhanVien" />
-      <End Role="H_Receipt" EntitySet="H_Receipt" />
-    </AssociationSet>
-    <AssociationSet Name="FK_H_Receipt_H_NhanVien2" Association="Self.FK_H_Receipt_H_NhanVien2">
-      <End Role="H_NhanVien" EntitySet="H_NhanVien" />
-      <End Role="H_Receipt" EntitySet="H_Receipt" />
-    </AssociationSet>
-    <AssociationSet Name="FK_H_Receipt_H_NhanVien3" Association="Self.FK_H_Receipt_H_NhanVien3">
-      <End Role="H_NhanVien" EntitySet="H_NhanVien" />
-      <End Role="H_Receipt" EntitySet="H_Receipt" />
-    </AssociationSet>
-    <AssociationSet Name="FK_H_Receipt_H_NhanVien4" Association="Self.FK_H_Receipt_H_NhanVien4">
-      <End Role="H_NhanVien" EntitySet="H_NhanVien" />
-      <End Role="H_Receipt" EntitySet="H_Receipt" />
-    </AssociationSet>
-    <AssociationSet Name="FK_H_Receipt_PT_H_PhuTung1" Association="Self.FK_H_Receipt_PT_H_PhuTung1">
+    <AssociationSet Name="FK_H_Receipt_PT_H_PhuTung" Association="Self.FK_H_Receipt_PT_H_PhuTung">
       <End Role="H_PhuTung" EntitySet="H_PhuTung" />
       <End Role="H_Receipt_PT" EntitySet="H_Receipt_PT" />
     </AssociationSet>
     <AssociationSet Name="FK_H_Receipt_PT_H_Receipt" Association="Self.FK_H_Receipt_PT_H_Receipt">
-      <End Role="H_Receipt" EntitySet="H_Receipt" />
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
       <End Role="H_Receipt_PT" EntitySet="H_Receipt_PT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receipt_Work_H_Receiption" Association="Self.FK_H_Receipt_Work_H_Receiption">
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
+      <End Role="H_Receipt_DichVu" EntitySet="H_Receipt_DichVu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receipt_Work_H_Work" Association="Self.FK_H_Receipt_Work_H_Work">
+      <End Role="H_DichVu" EntitySet="H_DichVu" />
+      <End Role="H_Receipt_DichVu" EntitySet="H_Receipt_DichVu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receiption_H_KhachHang" Association="Self.FK_H_Receiption_H_KhachHang">
+      <End Role="H_KhachHang" EntitySet="H_KhachHang" />
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receiption_H_Model" Association="Self.FK_H_Receiption_H_Model">
+      <End Role="H_Model" EntitySet="H_Model" />
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receiption_H_NhanVien" Association="Self.FK_H_Receiption_H_NhanVien">
+      <End Role="H_NhanVien" EntitySet="H_NhanVien" />
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receiption_H_NhanVien1" Association="Self.FK_H_Receiption_H_NhanVien1">
+      <End Role="H_NhanVien" EntitySet="H_NhanVien" />
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receiption_H_NhanVien2" Association="Self.FK_H_Receiption_H_NhanVien2">
+      <End Role="H_NhanVien" EntitySet="H_NhanVien" />
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receiption_H_NhanVien3" Association="Self.FK_H_Receiption_H_NhanVien3">
+      <End Role="H_NhanVien" EntitySet="H_NhanVien" />
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receiption_H_NhanVien4" Association="Self.FK_H_Receiption_H_NhanVien4">
+      <End Role="H_NhanVien" EntitySet="H_NhanVien" />
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receiption_H_SellReceipt" Association="Self.FK_H_Receiption_H_SellReceipt">
+      <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_Receiption_H_WorkType" Association="Self.FK_H_Receiption_H_WorkType">
+      <End Role="H_WorkType" EntitySet="H_WorkType" />
+      <End Role="H_Receiption" EntitySet="H_Receiption" />
     </AssociationSet>
     <AssociationSet Name="FK_H_SellReceipt_H_KhachHang" Association="Self.FK_H_SellReceipt_H_KhachHang">
       <End Role="H_KhachHang" EntitySet="H_KhachHang" />
@@ -479,6 +597,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_H_SellReceipt_H_NhanVien" Association="Self.FK_H_SellReceipt_H_NhanVien">
       <End Role="H_NhanVien" EntitySet="H_NhanVien" />
+      <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_H_SellReceipt_H_WorkType" Association="Self.FK_H_SellReceipt_H_WorkType">
+      <End Role="H_WorkType" EntitySet="H_WorkType" />
       <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
     </AssociationSet>
   </EntityContainer>

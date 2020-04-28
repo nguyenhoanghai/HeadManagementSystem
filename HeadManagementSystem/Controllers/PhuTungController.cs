@@ -14,7 +14,7 @@ namespace HeadManagementSystem.Controllers
     {
         [HMSAuthorize(Roles = UserRoleConstant.Member+","+UserRoleConstant.Admin)]
         public ActionResult Index()
-        {
+        { 
             return View();
         }
 
@@ -37,6 +37,27 @@ namespace HeadManagementSystem.Controllers
         {
             var rs = BLLPhuTung.Instance.InsertOrUpdate(App_Global.AppGlobal.Connectionstring, model);
             return Json(rs);
+        }
+         
+        public JsonResult InsertExcel()
+        {
+            int code = 0;
+            if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+            {
+                var fileUp = System.Web.HttpContext.Current.Request.Files["file"];
+                try
+                {
+                    if (fileUp != null)
+                    {
+                        code= BLLNhapPT.Instance.InsertFromExcel(fileUp.InputStream, "", App_Global.AppGlobal.Connectionstring);                         
+                    }
+                }
+                catch (Exception ex)
+                { }
+            }
+            return Json(code);
+          
+           
         }
     }
 }

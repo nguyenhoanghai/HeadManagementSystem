@@ -65,12 +65,21 @@
                             <label class="form-label">Ghi chú</label>
                         </div>
                     </div>
-                </div> 
+                </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
                     <button class="btn btn-danger m-b-5 m-t-5" id="btAdd"><i class="fa fa-plus-circle"></i> Thêm mới</button>
                     <button class="btn btn-primary m-b-5 m-t-5" id="btSave"><i class="fa fa-save"></i> Cập nhật</button>
                     <button class="btn btn-default m-b-5 m-t-5" id="btCancel"><i class="fa fa-ban col-red"></i> Hủy bỏ</button>
+                </div>
+                <div class="line"></div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
+
+                    <button class="btn btn-primary m-b-5 m-t-5" id="btnhap-excel"><i class="fa fa-file-excel-o"></i> Nhập phụ tùng từ file excel</button><br />
+                    <input type="file" style="display:none" name="filemau" id="file-mau" />
+                    <a href="/Excel_Template/nhap-phu-tung.xlsx">Tải file mẫu</a>
+                    <br />
+                    <span class="err-msg up-err"></span>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -83,7 +92,7 @@
                     <table id="phutung-table" class="table table-bordered table-striped table-hover dataTable phutung-table">  </table>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 </div>
 <script src="~/Scripts/HMS/phu-tung-index.js"></script>

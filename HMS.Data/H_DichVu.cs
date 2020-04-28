@@ -14,6 +14,11 @@ namespace HMS.Data
     
     public partial class H_DichVu
     {
+        public H_DichVu()
+        {
+            this.H_Receipt_DichVu = new HashSet<H_Receipt_DichVu>();
+        }
+    
         public int Id { get; set; }
         public int WorkId { get; set; }
         public int WorkTypeId { get; set; }
@@ -25,5 +30,6 @@ namespace HMS.Data
     
         public virtual H_Work H_Work { get; set; }
         public virtual H_WorkType H_WorkType { get; set; }
+        public virtual ICollection<H_Receipt_DichVu> H_Receipt_DichVu { get; set; }
     }
 }

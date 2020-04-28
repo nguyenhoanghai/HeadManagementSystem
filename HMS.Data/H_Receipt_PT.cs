@@ -26,6 +26,6 @@ namespace HMS.Data
         public bool IsDeleted { get; set; }
     
         public virtual H_PhuTung H_PhuTung { get; set; }
-        public virtual H_Receipt H_Receipt { get; set; }
+        public virtual H_Receiption H_Receiption { get; set; }
     }
 }
