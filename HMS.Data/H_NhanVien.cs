@@ -17,12 +17,12 @@ namespace HMS.Data
         public H_NhanVien()
         {
             this.H_Account = new HashSet<H_Account>();
-            this.H_SellReceipt = new HashSet<H_SellReceipt>();
             this.H_Receiption = new HashSet<H_Receiption>();
             this.H_Receiption1 = new HashSet<H_Receiption>();
             this.H_Receiption2 = new HashSet<H_Receiption>();
             this.H_Receiption3 = new HashSet<H_Receiption>();
             this.H_Receiption4 = new HashSet<H_Receiption>();
+            this.H_SellReceipt = new HashSet<H_SellReceipt>();
         }
     
         public int Id { get; set; }
@@ -37,11 +37,11 @@ namespace HMS.Data
     
         public virtual ICollection<H_Account> H_Account { get; set; }
         public virtual H_LoaiNhanVien H_LoaiNhanVien { get; set; }
-        public virtual ICollection<H_SellReceipt> H_SellReceipt { get; set; }
         public virtual ICollection<H_Receiption> H_Receiption { get; set; }
         public virtual ICollection<H_Receiption> H_Receiption1 { get; set; }
         public virtual ICollection<H_Receiption> H_Receiption2 { get; set; }
         public virtual ICollection<H_Receiption> H_Receiption3 { get; set; }
         public virtual ICollection<H_Receiption> H_Receiption4 { get; set; }
+        public virtual ICollection<H_SellReceipt> H_SellReceipt { get; set; }
     }
 }

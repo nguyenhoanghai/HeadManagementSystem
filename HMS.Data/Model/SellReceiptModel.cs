@@ -27,6 +27,7 @@ namespace HMS.Data.Model
         public double ChietKhau { get; set; }
         public double ThanhTien { get; set; } 
         public string GhiChu { get; set; }
-        public DateTime Ngay { get; set; } 
+        public DateTime Ngay { get; set; }
+        public string strNgay { get; set; }
     }
 }

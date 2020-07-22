@@ -44,5 +44,6 @@ namespace HMS.Data.Model
         public int QMSServiceId { get; set; }
         public int XeId { get; set; }
         public int Index { get; set; }
+        public string strNgay { get; set; }
     }
 }

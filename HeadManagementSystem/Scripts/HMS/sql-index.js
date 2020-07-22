@@ -83,7 +83,10 @@ HMS.SQLConnect = function () {
             contentType: 'application/json charset=utf-8',
             // beforeSend: function () { $('.progress').removeClass('hide'); },
             success: function (sms) {
-                alert(sms);
+                if (sms == 'OK')
+                    window.location.href = '/';
+                else
+                    alert(sms);
             }
         });
     }

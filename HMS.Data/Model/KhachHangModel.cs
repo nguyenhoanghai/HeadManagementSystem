@@ -21,6 +21,12 @@ namespace HMS.Data.Model
 
     public class KhachHangModel : _KhachHangModel
     {
+        public int? XeId { get; set; }
+        public DateTime NgayMua { get; set; }
+        public string strNgayMua { get; set; }
+        public DateTime NgayTao { get; set; }
+        public string strNgayTao { get; set; }
+        public int Loaixe { get; set; }
         public int Id { get; set; }
         public int? ModelId { get; set; }
         public string strModel { get; set; }

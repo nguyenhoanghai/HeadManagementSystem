@@ -424,8 +424,8 @@ namespace HMS.Data.BLL
         {
             using (var db = new HMSEntities(connectString))
             {
-                var to = date.AddHours(23);
-                var objs = db.H_SellReceipt.Where(x => !x.IsDeleted && x.CreatedDate >= date && x.CreatedDate <= to).OrderByDescending(x => x.CreatedDate).Select(x => x.Index).ToList();
+                var to = date.AddHours(23).AddMinutes(59);
+                var objs = db.H_SellReceipt.Where(x => !x.IsDeleted && x.CreatedDate >= date && x.CreatedDate <= to).OrderByDescending(x => x.Index).Select(x => x.Index).ToList();
                 if (objs.Count > 0)
                     return (objs[0] + 1);
                 return 1;

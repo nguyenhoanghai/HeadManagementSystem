@@ -654,23 +654,6 @@
             <End Role="H_PhuTung" EntitySet="H_PhuTung" />
             <End Role="H_Receipt_PT" EntitySet="H_Receipt_PT" />
           </AssociationSet>
-          <EntitySet Name="H_SellReceipt" EntityType="HMSModel.H_SellReceipt" />
-          <AssociationSet Name="FK_H_SellReceipt_H_KhachHang" Association="HMSModel.FK_H_SellReceipt_H_KhachHang">
-            <End Role="H_KhachHang" EntitySet="H_KhachHang" />
-            <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
-          </AssociationSet>
-          <AssociationSet Name="FK_H_SellReceipt_H_Model" Association="HMSModel.FK_H_SellReceipt_H_Model">
-            <End Role="H_Model" EntitySet="H_Model" />
-            <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
-          </AssociationSet>
-          <AssociationSet Name="FK_H_SellReceipt_H_NhanVien" Association="HMSModel.FK_H_SellReceipt_H_NhanVien">
-            <End Role="H_NhanVien" EntitySet="H_NhanVien" />
-            <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
-          </AssociationSet>
-          <AssociationSet Name="FK_H_SellReceipt_H_WorkType" Association="HMSModel.FK_H_SellReceipt_H_WorkType">
-            <End Role="H_WorkType" EntitySet="H_WorkType" />
-            <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
-          </AssociationSet>
           <EntitySet Name="H_NhapPT" EntityType="HMSModel.H_NhapPT" />
           <AssociationSet Name="FK_H_NhapPT_H_PhuTung" Association="HMSModel.FK_H_NhapPT_H_PhuTung">
             <End Role="H_PhuTung" EntitySet="H_PhuTung" />
@@ -713,13 +696,30 @@
             <End Role="H_Receiption" EntitySet="H_Receiption" />
             <End Role="H_Receipt_PT" EntitySet="H_Receipt_PT" />
           </AssociationSet>
+          <AssociationSet Name="FK_H_Receiption_H_WorkType" Association="HMSModel.FK_H_Receiption_H_WorkType">
+            <End Role="H_WorkType" EntitySet="H_WorkType" />
+            <End Role="H_Receiption" EntitySet="H_Receiption" />
+          </AssociationSet>
+          <EntitySet Name="H_SellReceipt" EntityType="HMSModel.H_SellReceipt" />
+          <AssociationSet Name="FK_H_SellReceipt_H_KhachHang" Association="HMSModel.FK_H_SellReceipt_H_KhachHang">
+            <End Role="H_KhachHang" EntitySet="H_KhachHang" />
+            <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_H_SellReceipt_H_Model" Association="HMSModel.FK_H_SellReceipt_H_Model">
+            <End Role="H_Model" EntitySet="H_Model" />
+            <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_H_SellReceipt_H_NhanVien" Association="HMSModel.FK_H_SellReceipt_H_NhanVien">
+            <End Role="H_NhanVien" EntitySet="H_NhanVien" />
+            <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
+          </AssociationSet>
           <AssociationSet Name="FK_H_Receiption_H_SellReceipt" Association="HMSModel.FK_H_Receiption_H_SellReceipt">
             <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
             <End Role="H_Receiption" EntitySet="H_Receiption" />
           </AssociationSet>
-          <AssociationSet Name="FK_H_Receiption_H_WorkType" Association="HMSModel.FK_H_Receiption_H_WorkType">
+          <AssociationSet Name="FK_H_SellReceipt_H_WorkType" Association="HMSModel.FK_H_SellReceipt_H_WorkType">
             <End Role="H_WorkType" EntitySet="H_WorkType" />
-            <End Role="H_Receiption" EntitySet="H_Receiption" />
+            <End Role="H_SellReceipt" EntitySet="H_SellReceipt" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="H_Account">
@@ -770,8 +770,8 @@
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="H_NgheNghiep" Relationship="HMSModel.FK_H_KhachHang_H_NgheNghiep" FromRole="H_KhachHang" ToRole="H_NgheNghiep" />
-          <NavigationProperty Name="H_SellReceipt" Relationship="HMSModel.FK_H_SellReceipt_H_KhachHang" FromRole="H_KhachHang" ToRole="H_SellReceipt" />
           <NavigationProperty Name="H_Receiption" Relationship="HMSModel.FK_H_Receiption_H_KhachHang" FromRole="H_KhachHang" ToRole="H_Receiption" />
+          <NavigationProperty Name="H_SellReceipt" Relationship="HMSModel.FK_H_SellReceipt_H_KhachHang" FromRole="H_KhachHang" ToRole="H_SellReceipt" />
         </EntityType>
         <EntityType Name="H_LoaiNhanVien">
           <Key>
@@ -791,8 +791,8 @@
           <Property Name="Code" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="H_SellReceipt" Relationship="HMSModel.FK_H_SellReceipt_H_Model" FromRole="H_Model" ToRole="H_SellReceipt" />
           <NavigationProperty Name="H_Receiption" Relationship="HMSModel.FK_H_Receiption_H_Model" FromRole="H_Model" ToRole="H_Receiption" />
+          <NavigationProperty Name="H_SellReceipt" Relationship="HMSModel.FK_H_SellReceipt_H_Model" FromRole="H_Model" ToRole="H_SellReceipt" />
         </EntityType>
         <EntityType Name="H_NgheNghiep">
           <Key>
@@ -819,12 +819,12 @@
           <Property Name="Index" Type="Int32" Nullable="false" />
           <NavigationProperty Name="H_Account" Relationship="HMSModel.FK_H_Account_H_NhanVien" FromRole="H_NhanVien" ToRole="H_Account" />
           <NavigationProperty Name="H_LoaiNhanVien" Relationship="HMSModel.FK_H_NhanVien_H_LoaiNhanVien" FromRole="H_NhanVien" ToRole="H_LoaiNhanVien" />
-          <NavigationProperty Name="H_SellReceipt" Relationship="HMSModel.FK_H_SellReceipt_H_NhanVien" FromRole="H_NhanVien" ToRole="H_SellReceipt" />
           <NavigationProperty Name="H_Receiption" Relationship="HMSModel.FK_H_Receiption_H_NhanVien" FromRole="H_NhanVien" ToRole="H_Receiption" />
           <NavigationProperty Name="H_Receiption1" Relationship="HMSModel.FK_H_Receiption_H_NhanVien1" FromRole="H_NhanVien" ToRole="H_Receiption" />
           <NavigationProperty Name="H_Receiption2" Relationship="HMSModel.FK_H_Receiption_H_NhanVien2" FromRole="H_NhanVien" ToRole="H_Receiption" />
           <NavigationProperty Name="H_Receiption3" Relationship="HMSModel.FK_H_Receiption_H_NhanVien3" FromRole="H_NhanVien" ToRole="H_Receiption" />
           <NavigationProperty Name="H_Receiption4" Relationship="HMSModel.FK_H_Receiption_H_NhanVien4" FromRole="H_NhanVien" ToRole="H_Receiption" />
+          <NavigationProperty Name="H_SellReceipt" Relationship="HMSModel.FK_H_SellReceipt_H_NhanVien" FromRole="H_NhanVien" ToRole="H_SellReceipt" />
           </EntityType>
         <EntityType Name="H_PhuTung">
           <Key>
@@ -892,8 +892,8 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="H_DichVu" Relationship="HMSModel.FK_H_DichVu_H_WorkType" FromRole="H_WorkType" ToRole="H_DichVu" />
-          <NavigationProperty Name="H_SellReceipt" Relationship="HMSModel.FK_H_SellReceipt_H_WorkType" FromRole="H_WorkType" ToRole="H_SellReceipt" />
           <NavigationProperty Name="H_Receiption" Relationship="HMSModel.FK_H_Receiption_H_WorkType" FromRole="H_WorkType" ToRole="H_Receiption" />
+          <NavigationProperty Name="H_SellReceipt" Relationship="HMSModel.FK_H_SellReceipt_H_WorkType" FromRole="H_WorkType" ToRole="H_SellReceipt" />
         </EntityType>
         <Association Name="FK_H_Account_H_NhanVien">
           <End Type="HMSModel.H_NhanVien" Role="H_NhanVien" Multiplicity="1" />
@@ -979,81 +979,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="H_SellReceipt">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KHId" Type="Int32" Nullable="false" />
-          <Property Name="ModelId" Type="Int32" Nullable="false" />
-          <Property Name="SoPhieu" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="NV_TuVan" Type="Int32" />
-          <Property Name="MachineNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ChassisNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Double" Nullable="false" />
-          <Property Name="Discount" Type="Double" Nullable="false" />
-          <Property Name="Total" Type="Double" Nullable="false" />
-          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="WorkTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Index" Type="Int32" Nullable="false" />
-          <Property Name="GuaranteeNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="H_KhachHang" Relationship="HMSModel.FK_H_SellReceipt_H_KhachHang" FromRole="H_SellReceipt" ToRole="H_KhachHang" />
-          <NavigationProperty Name="H_Model" Relationship="HMSModel.FK_H_SellReceipt_H_Model" FromRole="H_SellReceipt" ToRole="H_Model" />
-          <NavigationProperty Name="H_NhanVien" Relationship="HMSModel.FK_H_SellReceipt_H_NhanVien" FromRole="H_SellReceipt" ToRole="H_NhanVien" />
-          <NavigationProperty Name="H_WorkType" Relationship="HMSModel.FK_H_SellReceipt_H_WorkType" FromRole="H_SellReceipt" ToRole="H_WorkType" />
-          <NavigationProperty Name="H_Receiption" Relationship="HMSModel.FK_H_Receiption_H_SellReceipt" FromRole="H_SellReceipt" ToRole="H_Receiption" />
-        </EntityType>
-        <Association Name="FK_H_SellReceipt_H_KhachHang">
-          <End Type="HMSModel.H_KhachHang" Role="H_KhachHang" Multiplicity="1" />
-          <End Type="HMSModel.H_SellReceipt" Role="H_SellReceipt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="H_KhachHang">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="H_SellReceipt">
-              <PropertyRef Name="KHId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_H_SellReceipt_H_Model">
-          <End Type="HMSModel.H_Model" Role="H_Model" Multiplicity="1" />
-          <End Type="HMSModel.H_SellReceipt" Role="H_SellReceipt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="H_Model">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="H_SellReceipt">
-              <PropertyRef Name="ModelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_H_SellReceipt_H_NhanVien">
-          <End Type="HMSModel.H_NhanVien" Role="H_NhanVien" Multiplicity="0..1" />
-          <End Type="HMSModel.H_SellReceipt" Role="H_SellReceipt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="H_NhanVien">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="H_SellReceipt">
-              <PropertyRef Name="NV_TuVan" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_H_SellReceipt_H_WorkType">
-          <End Type="HMSModel.H_WorkType" Role="H_WorkType" Multiplicity="1" />
-          <End Type="HMSModel.H_SellReceipt" Role="H_SellReceipt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="H_WorkType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="H_SellReceipt">
-              <PropertyRef Name="WorkTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="H_NhapPT">
           <Key>
             <PropertyRef Name="Id" />
@@ -1128,8 +1053,8 @@
           <NavigationProperty Name="H_NhanVien4" Relationship="HMSModel.FK_H_Receiption_H_NhanVien4" FromRole="H_Receiption" ToRole="H_NhanVien" />
           <NavigationProperty Name="H_Receipt_DichVu" Relationship="HMSModel.FK_H_Receipt_Work_H_Receiption" FromRole="H_Receiption" ToRole="H_Receipt_DichVu" />
           <NavigationProperty Name="H_Receipt_PT" Relationship="HMSModel.FK_H_Receipt_PT_H_Receipt" FromRole="H_Receiption" ToRole="H_Receipt_PT" />
-          <NavigationProperty Name="H_SellReceipt" Relationship="HMSModel.FK_H_Receiption_H_SellReceipt" FromRole="H_Receiption" ToRole="H_SellReceipt" />
           <NavigationProperty Name="H_WorkType" Relationship="HMSModel.FK_H_Receiption_H_WorkType" FromRole="H_Receiption" ToRole="H_WorkType" />
+          <NavigationProperty Name="H_SellReceipt" Relationship="HMSModel.FK_H_Receiption_H_SellReceipt" FromRole="H_Receiption" ToRole="H_SellReceipt" />
         </EntityType>
         <Association Name="FK_H_Receiption_H_KhachHang">
           <End Type="HMSModel.H_KhachHang" Role="H_KhachHang" Multiplicity="1" />
@@ -1239,6 +1164,81 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_H_Receiption_H_WorkType">
+          <End Type="HMSModel.H_WorkType" Role="H_WorkType" Multiplicity="1" />
+          <End Type="HMSModel.H_Receiption" Role="H_Receiption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="H_WorkType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="H_Receiption">
+              <PropertyRef Name="WorkTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="H_SellReceipt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KHId" Type="Int32" Nullable="false" />
+          <Property Name="ModelId" Type="Int32" Nullable="false" />
+          <Property Name="SoPhieu" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NV_TuVan" Type="Int32" />
+          <Property Name="MachineNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChassisNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="WorkTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Index" Type="Int32" Nullable="false" />
+          <Property Name="GuaranteeNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="H_KhachHang" Relationship="HMSModel.FK_H_SellReceipt_H_KhachHang" FromRole="H_SellReceipt" ToRole="H_KhachHang" />
+          <NavigationProperty Name="H_Model" Relationship="HMSModel.FK_H_SellReceipt_H_Model" FromRole="H_SellReceipt" ToRole="H_Model" />
+          <NavigationProperty Name="H_NhanVien" Relationship="HMSModel.FK_H_SellReceipt_H_NhanVien" FromRole="H_SellReceipt" ToRole="H_NhanVien" />
+          <NavigationProperty Name="H_Receiption" Relationship="HMSModel.FK_H_Receiption_H_SellReceipt" FromRole="H_SellReceipt" ToRole="H_Receiption" />
+          <NavigationProperty Name="H_WorkType" Relationship="HMSModel.FK_H_SellReceipt_H_WorkType" FromRole="H_SellReceipt" ToRole="H_WorkType" />
+        </EntityType>
+        <Association Name="FK_H_SellReceipt_H_KhachHang">
+          <End Type="HMSModel.H_KhachHang" Role="H_KhachHang" Multiplicity="1" />
+          <End Type="HMSModel.H_SellReceipt" Role="H_SellReceipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="H_KhachHang">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="H_SellReceipt">
+              <PropertyRef Name="KHId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_H_SellReceipt_H_Model">
+          <End Type="HMSModel.H_Model" Role="H_Model" Multiplicity="1" />
+          <End Type="HMSModel.H_SellReceipt" Role="H_SellReceipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="H_Model">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="H_SellReceipt">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_H_SellReceipt_H_NhanVien">
+          <End Type="HMSModel.H_NhanVien" Role="H_NhanVien" Multiplicity="0..1" />
+          <End Type="HMSModel.H_SellReceipt" Role="H_SellReceipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="H_NhanVien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="H_SellReceipt">
+              <PropertyRef Name="NV_TuVan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_H_Receiption_H_SellReceipt">
           <End Type="HMSModel.H_SellReceipt" Role="H_SellReceipt" Multiplicity="0..1" />
           <End Type="HMSModel.H_Receiption" Role="H_Receiption" Multiplicity="*" />
@@ -1251,14 +1251,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_H_Receiption_H_WorkType">
+        <Association Name="FK_H_SellReceipt_H_WorkType">
           <End Type="HMSModel.H_WorkType" Role="H_WorkType" Multiplicity="1" />
-          <End Type="HMSModel.H_Receiption" Role="H_Receiption" Multiplicity="*" />
+          <End Type="HMSModel.H_SellReceipt" Role="H_SellReceipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="H_WorkType">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="H_Receiption">
+            <Dependent Role="H_SellReceipt">
               <PropertyRef Name="WorkTypeId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1425,29 +1425,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="H_SellReceipt">
-            <EntityTypeMapping TypeName="HMSModel.H_SellReceipt">
-              <MappingFragment StoreEntitySet="H_SellReceipt">
-                <ScalarProperty Name="GuaranteeNumber" ColumnName="GuaranteeNumber" />
-                <ScalarProperty Name="Index" ColumnName="Index" />
-                <ScalarProperty Name="WorkTypeId" ColumnName="WorkTypeId" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
-                <ScalarProperty Name="ChassisNumber" ColumnName="ChassisNumber" />
-                <ScalarProperty Name="MachineNumber" ColumnName="MachineNumber" />
-                <ScalarProperty Name="NV_TuVan" ColumnName="NV_TuVan" />
-                <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
-                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
-                <ScalarProperty Name="KHId" ColumnName="KHId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="H_NhapPT">
             <EntityTypeMapping TypeName="HMSModel.H_NhapPT">
               <MappingFragment StoreEntitySet="H_NhapPT">
@@ -1499,6 +1476,29 @@
                 <ScalarProperty Name="WorkTypeId" ColumnName="WorkTypeId" />
                 <ScalarProperty Name="KHId" ColumnName="KHId" />
                 <ScalarProperty Name="SellReceiptId" ColumnName="SellReceiptId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="H_SellReceipt">
+            <EntityTypeMapping TypeName="HMSModel.H_SellReceipt">
+              <MappingFragment StoreEntitySet="H_SellReceipt">
+                <ScalarProperty Name="GuaranteeNumber" ColumnName="GuaranteeNumber" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="WorkTypeId" ColumnName="WorkTypeId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+                <ScalarProperty Name="ChassisNumber" ColumnName="ChassisNumber" />
+                <ScalarProperty Name="MachineNumber" ColumnName="MachineNumber" />
+                <ScalarProperty Name="NV_TuVan" ColumnName="NV_TuVan" />
+                <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="KHId" ColumnName="KHId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

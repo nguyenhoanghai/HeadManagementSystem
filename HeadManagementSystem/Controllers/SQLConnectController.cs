@@ -61,8 +61,8 @@ namespace HeadManagementSystem.Controllers
             return Json(models);
         }
 
-
-        public JsonResult Save(string sname, string lg, string ps, bool authen, string dataName)
+        [HttpPost]
+        public JsonResult Save(  string sname, string lg, string ps, bool authen, string dataName)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace HeadManagementSystem.Controllers
                     //Close writer
                     writer.Close();
                 }
-                return Json("Lưu thành công.!");
+                return Json("OK");
             }
             catch (Exception ex)
             {

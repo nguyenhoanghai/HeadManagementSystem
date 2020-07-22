@@ -17,7 +17,7 @@ namespace HeadManagementSystem.Controllers
         [AllowAnonymous]
         public ActionResult SignIn(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = returnUrl; 
             return View();
         }
 
@@ -47,6 +47,7 @@ namespace HeadManagementSystem.Controllers
                 }
                 catch (Exception ex)
                 {
+                    throw ex;
                     // dc50Exception.AddToModelState(ModelState);
                     return View(model);
                 }

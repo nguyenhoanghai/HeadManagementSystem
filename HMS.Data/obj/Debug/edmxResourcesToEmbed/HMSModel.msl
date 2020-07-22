@@ -157,29 +157,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="H_SellReceipt">
-      <EntityTypeMapping TypeName="HMSModel.H_SellReceipt">
-        <MappingFragment StoreEntitySet="H_SellReceipt">
-          <ScalarProperty Name="GuaranteeNumber" ColumnName="GuaranteeNumber" />
-          <ScalarProperty Name="Index" ColumnName="Index" />
-          <ScalarProperty Name="WorkTypeId" ColumnName="WorkTypeId" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="Note" ColumnName="Note" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Discount" ColumnName="Discount" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
-          <ScalarProperty Name="ChassisNumber" ColumnName="ChassisNumber" />
-          <ScalarProperty Name="MachineNumber" ColumnName="MachineNumber" />
-          <ScalarProperty Name="NV_TuVan" ColumnName="NV_TuVan" />
-          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
-          <ScalarProperty Name="ModelId" ColumnName="ModelId" />
-          <ScalarProperty Name="KHId" ColumnName="KHId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="H_NhapPT">
       <EntityTypeMapping TypeName="HMSModel.H_NhapPT">
         <MappingFragment StoreEntitySet="H_NhapPT">
@@ -231,6 +208,29 @@
           <ScalarProperty Name="WorkTypeId" ColumnName="WorkTypeId" />
           <ScalarProperty Name="KHId" ColumnName="KHId" />
           <ScalarProperty Name="SellReceiptId" ColumnName="SellReceiptId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="H_SellReceipt">
+      <EntityTypeMapping TypeName="HMSModel.H_SellReceipt">
+        <MappingFragment StoreEntitySet="H_SellReceipt">
+          <ScalarProperty Name="GuaranteeNumber" ColumnName="GuaranteeNumber" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="WorkTypeId" ColumnName="WorkTypeId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="ChassisNumber" ColumnName="ChassisNumber" />
+          <ScalarProperty Name="MachineNumber" ColumnName="MachineNumber" />
+          <ScalarProperty Name="NV_TuVan" ColumnName="NV_TuVan" />
+          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+          <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+          <ScalarProperty Name="KHId" ColumnName="KHId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

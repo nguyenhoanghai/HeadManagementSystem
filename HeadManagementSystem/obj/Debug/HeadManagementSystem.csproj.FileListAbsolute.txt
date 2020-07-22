@@ -264,3 +264,4 @@ E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.Owin.xml
 E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.Owin.Security.xml
 E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.Owin.Security.Cookies.xml
 E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Hai_GPRO\Git_HMS\HeadManagementSystem\bin\QMS_System.Data.dll

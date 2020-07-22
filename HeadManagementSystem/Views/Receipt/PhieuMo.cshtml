@@ -1,7 +1,8 @@
 ﻿@model List<HMS.Data.Model.PhieuMoModel>
+@using Newtonsoft.Json;
 @{
     ViewBag.Title = "Phiếu mở";
-    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="row clearfix">
@@ -17,7 +18,7 @@
             <div class="body  ">
                 <div class="table-responsive">
                     <table id="table-phieu-mo" class="table table-bordered table-striped table-hover dataTable ">
-                        <thead>
+                        @*<thead>
                             <tr>
                                 <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Số phiếu</th>
                                 <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Thông tin khách hàng</th>
@@ -28,7 +29,7 @@
                                 <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Tiền công</th>
                                 <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Tồng tiền</th>
                                 <th class="col-md-3 col-xs-3 col-sm-3 col-lg-3">Yêu cầu khách hàng</th>
-                                <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ngày tạo phiếu</th> 
+                                <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ngày tạo phiếu</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,120 +57,19 @@
                                     <td>@item.TienCong</td>
                                     <td>@item.TongTien</td>
                                     <td>@item.Yeucau</td>
-                                    <td>@item.Ngay.ToString("dd/MM/yyyy h:mm tt")</td> 
+                                    <td>@item.Ngay.ToString("dd/MM/yyyy h:mm tt")</td>
                                 </tr>
                             }
-                        </tbody>
+                        </tbody>*@
                     </table>
                 </div>
-
-
-
-
-
-
-
-                @*
-
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs tab-col-pink" role="tablist">
-                        <li role="presentation" class="active">
-                            <a href="#home_with_icon_title" data-toggle="tab">
-                                <i class="material-icons">view_list</i> Tất cả khách hàng (30)
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#profile_with_icon_title" data-toggle="tab">
-                                <i class="material-icons">view_list</i> Khách hàng dịch vụ (10)
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#messages_with_icon_title" data-toggle="tab">
-                                <i class="material-icons">view_list</i> Khách hàng mua xe (20)
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade in active" id="home_with_icon_title">
-                            <div class="table-responsive">
-                                <table id="js-customer-index" class="table table-bordered table-striped table-hover dataTable basic-data-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ngày nhập</th>
-                                            <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Mã khách hàng</th>
-                                            <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Tên khách hàng</th>
-                                            <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Địa chỉ</th>
-                                            <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Thông tin khách hàng</th>
-                                            <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Thông tin xe</th>
-                                            <th class="col-md-1 col-xs-2 col-sm-2 col-lg-2">Thông tin dịch vụ</th>
-                                            <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ngày cuối mua xe</th>
-                                            <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ghi chú</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td>@item.Ngay.ToString("dd/MM/yyyy")</td>
-                                                <td>@item.KHDThoai</td>
-                                                <td>@item.KHName</td>
-                                                <td>
-                                                    <div>@item.KHDChi</div>
-                                                    <div>@item.KHPhuong</div>
-                                                    <div>@item.KHHuyen</div>
-                                                    <div>@item.KHTPho</div>
-                                                </td>
-                                                <td>
-                                                    <div><span class="col-pink">Điện thoại:</span><span> @item.KHDThoai</span></div>
-                                                    <div><span class="col-pink">Ngày sinh:</span><span> @(item.KHNSinh.HasValue ? item.KHNSinh.Value.ToString("dd/MM/yyyy") : "")</span></div>
-                                                </td>
-                                                <td>
-                                                    <div><span class="col-pink">Xe đã mua:</span><span> @item.SLMua</span></div>
-                                                    <div><span class="col-pink">Tổng tiền:</span><span> @item.TongMua</span></div>
-                                                </td>
-                                                <td>
-                                                    <div><span class="col-pink">Số lượng phiếu:</span><span> @item.SLDichVu</span></div>
-                                                    <div><span class="col-pink">Tổng tiền:</span><span> @item.TongDichVu</span></div>
-                                                </td>
-                                                <td>
-                                                    @if (item.NgayMuaCuoi.HasValue)
-                                                    {
-                                                        <span class="bg-cyan" style="padding:3px 5px">@item.NgayMuaCuoi.Value.ToString("dd/MM/yyyy") </span>
-                                                    }
-                                                </td>
-                                                <td>@item.GhiChu</td>
-                                            </tr>
-                                        }
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="profile_with_icon_title">
-                            <b>Profile Content</b>
-                            <p>
-                                Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                sadipscing mel.
-                            </p>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="messages_with_icon_title">
-                            <b>Message Content</b>
-                            <p>
-                                Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                sadipscing mel.
-                            </p>
-                        </div>
-                    </div>
-                *@
             </div>
         </div>
     </div>
 </div>
+<script src="~/Scripts/HMS/phieu-mo.js"></script>
 <script>
-    createDatatable('table-phieu-mo', false, false);
+    var obj = new HMS.PhieuMo();
+    obj.GetGlobal().Data.data = JSON.parse('@Html.Raw(JsonConvert.SerializeObject( Model))');
+    obj.Init();
 </script>

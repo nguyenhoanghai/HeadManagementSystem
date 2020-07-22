@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Configuration;
 
 namespace HeadManagementSystem.App_Global
 {
@@ -14,10 +12,21 @@ namespace HeadManagementSystem.App_Global
             {
                 if (string.IsNullOrEmpty(_connectionstring))
                 {
-                    _connectionstring = Helper.GPRO_Helper.Instance.GetEntityConnectString() ;
+                    _connectionstring = Helper.GPRO_Helper.Instance.GetEntityConnectString();
                 }
                 return _connectionstring;
             }
+        }
+
+        public static string ProductCode = "GPRO_HMS";
+        public static string QMSUrl
+        {
+            get { return ConfigurationManager.AppSettings["QMSUrl"]; }
+        }
+
+        public static string UseQMS
+        {
+            get { return (ConfigurationManager.AppSettings["UseQMS"] != null ? ConfigurationManager.AppSettings["UseQMS"].ToString()  : "0"); }
         }
     }
 }

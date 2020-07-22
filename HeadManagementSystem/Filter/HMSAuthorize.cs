@@ -1,8 +1,6 @@
 ﻿using HeadManagementSystem.Constant.Authentication;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Web;
@@ -16,6 +14,12 @@ namespace HeadManagementSystem.Filter
     {
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
+            if (httpContext.Request.Path.Trim().ToLower() == "/sqlconnect/index" ||
+                httpContext.Request.Path.Trim().ToLower() == "/sqlconnect" ||
+                httpContext.Request.Path.Trim() == "/SQLConnect/GetDatabases" ||
+                httpContext.Request.Path.Trim().ToLower() == "/ketnoicsdl" ||
+                httpContext.Request.Path.Trim() == "/SQLConnect/Save")
+                return true;
             HttpCookie authCookie = httpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
             if (authCookie != null)
             {

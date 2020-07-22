@@ -9,7 +9,9 @@ namespace HMS.Data.Model
         public string KHCode { get; set; }
         public string KHName { get; set; }
         public DateTime Ngay { get; set; }
+        public string strNgay { get; set; }
         public DateTime? NgayDong { get; set; }
+        public string strNgayDong { get; set; }
         public string SoPhieu { get; set; }
         public string Model { get; set; }
         public string SoKhung { get; set; }

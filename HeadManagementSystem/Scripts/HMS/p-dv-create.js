@@ -30,7 +30,10 @@ HMS.Receipt = function () {
             _Gtinh: 'Nam',
             _NNghiep: '',
             _Tinh: '',
-            _Xes: []
+            _Xes: [],
+            _XeId: 0,
+            _wtypeId: 0,
+            _modelId: 0
         }
     }
     this.GetGlobal = function () {
@@ -59,10 +62,14 @@ HMS.Receipt = function () {
         $('#jobid').val(Global.Data._NNghiep);
 
         $('#code').focus(() => { $('#code').select(); });
+
+        $('select[name="ModelId"]').val(Global.Data._modelId);
+        $('select[name="WTypeId"]').val(Global.Data._wtypeId);
         RefreshControls();
         //Textarea auto growth
         autosize($('textarea.auto-growth'));
-
+        if (Global.Data._XeId > 0)
+            disabledControll();
     }
 
     var RegisterEvent = function () {
@@ -96,7 +103,12 @@ HMS.Receipt = function () {
         });
 
         $('.btn-find').click(() => {
-            window.location.href = ('/Receipt/Create?ma=' + $('#code').val());
+            if ($('#keyword').val() == '') {
+                $('.err-msg').html("Vui lòng nhập từ khóa cần tìm.");
+                $('#keyword').select();
+            }
+            else
+                window.location.href = ('/Receipt/Create?keyword=' + $('#keyword').val());
         });
 
         $('select[name="XeId"]').change(() => {
@@ -124,6 +136,15 @@ HMS.Receipt = function () {
         });
 
         $('#Km').focus(() => { $('#Km').select() });
+
+    }
+
+    disabledControll = () => {
+        $('#code,.btn-find').prop('disabled', true);
+        $('input[name="SoMay"]').prop('disabled', true);
+        $('input[name="SoKhung"]').prop('disabled', true);
+        $('select[name="ModelId"]').prop('disabled', true);
+        $('select[name="WTypeId"]').prop('disabled', true);
     }
 
     function IsValid() {

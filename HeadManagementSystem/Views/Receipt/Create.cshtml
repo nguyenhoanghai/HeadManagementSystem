@@ -28,6 +28,19 @@
                         <div class="add-box-body masked-input">
                             @Html.HiddenFor(x => x.Id)
                             @Html.HiddenFor(x => x.Index)
+                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" id="keyword" class="form-control" />
+                                        <label class="form-label">Từ khóa (biển số xe hoặc số khung hoặc số máy)</label>
+                                    </div>
+                                    <div class="err-msg">@(ViewBag.alert != null ? ViewBag.alert : "")</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <button class="btn btn-primary m-b-5 m-t-5 btn-find">Tìm kiếm</button>
+                               
+                            </div> 
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -38,10 +51,7 @@
                                     <div class="err-code"></div>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <button class="btn btn-primary m-b-5 m-t-5 btn-find">Tìm kiếm</button>
-                                <div class="err-msg">@(ViewBag.alert != null ? ViewBag.alert : "")</div>
-                            </div>
+                            
                             <div id="kh-info">
                                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group form-float">
@@ -53,7 +63,7 @@
                                         <div class="err-name"></div>
                                     </div>
                                 </div>
-                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             @Html.EditorFor(m => m.NSinh, new { htmlAttributes = new { @id = "ngaysinh", @class = "date form-control" } })
@@ -62,7 +72,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2">
                                     <div class="form-group form-float form-select">
                                         <div class="label-select">Giới tính</div>
                                         <select class="form-control show-tick select" id="gioitinh" name="GTinh" data-live-search="true">
@@ -94,26 +104,26 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            @Html.EditorFor(m => m.Phuong, new { htmlAttributes = new { @class = "  form-control" } })
-                                            <label class="form-label">Phường</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                                    <div class="form-group form-float form-select">
-                                        <div class="label-select">Quận/Huyện</div>
-                                        <select class="form-control show-tick select" data-live-search="true" name="Huyen" id="quan-huyen"></select>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                                     <div class="form-group form-float form-select">
                                         <div class="label-select">Tỉnh/Thành phố</div>
                                         <select class="form-control show-tick select" data-live-search="true" name="TPho" id="tinh-thanhpho"></select>
                                     </div>
+                                </div> <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="form-group form-float form-select">
+                                        <div class="label-select">Quận/Huyện</div>
+                                        <select class="form-control show-tick select" data-live-search="true" name="Huyen" id="quan-huyen"></select>
+                                    </div>
                                 </div>
+                                       <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                                           <div class="form-group form-float">
+                                               <div class="form-line">
+                                                   @Html.EditorFor(m => m.Phuong, new { htmlAttributes = new { @class = "  form-control" } })
+                                                   <label class="form-label">Phường</label>
+                                               </div>
+                                           </div>
+                                       </div>
 
 
 
@@ -135,28 +145,29 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 err-msg">** Chú ý: trường hợp khách hàng chưa có trong hệ thống sẽ được tạo mới cùng với thông tin phiếu dịch vụ.</div>
-                             <div class="clearfix"></div>
+                            <div class="clearfix"></div>
 
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-10 padding-0">
                         <div class="add-box-title">Thông tin xe</div>
                         <div class="add-box-body masked-input">
-                            @if (Model.Xes.Count > 0)
-                            {
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="form-group form-float form-select">
-                                        <div class="label-select">Xe đã mua</div>
-                                        <select class="form-control show-tick select" data-live-search="true" name="XeId">
-                                            <option value=""></option>
-                                            @for (int i = 0; i < Model.Xes.Count; i++)
-                                            {
-                                                <option value="@Model.Xes[i].Id">@Model.Xes[i].Name - Ngày mua : @Model.Xes[i].Data4 </option>
-                                            }
-                                        </select>
+                            <input type="text" value="@Model.XeId" style="display:none" name="XeId" />
+                            @*@if (Model.Xes.Count > 0)
+                                {
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group form-float form-select">
+                                            <div class="label-select">Xe đã mua</div>
+                                            <select class="form-control show-tick select xe-mua" data-live-search="true" name="XeId">
+                                                <option value="">Khác</option>
+                                                @for (int i = 0; i < Model.Xes.Count; i++)
+                                                {
+                                                    <option value="@Model.Xes[i].Id">@Model.Xes[i].Name - Ngày mua : @Model.Xes[i].Data4 </option>
+                                                }
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                            }
+                                }*@
 
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group form-float">
@@ -288,10 +299,13 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 <script src="~/Scripts/HMS/p-dv-create.js"></script>
 <script>
     var obj = new HMS.Receipt();
+    obj.GetGlobal().Data._wtypeId = @Html.Raw(Model.WTypeId ) ;
+    obj.GetGlobal().Data._modelId = @Html.Raw(Model.ModelId.HasValue ? Model.ModelId : 0) ;
+    obj.GetGlobal().Data._XeId = @Html.Raw(Model.Id) ;
     obj.GetGlobal().Data._NNghiep = @Html.Raw(Model.JobId.HasValue ? Model.JobId:0) ;
     obj.GetGlobal().Data._Gtinh = '@Html.Raw(Model.GTinh?1:0)';
     obj.GetGlobal().Data._Tinh = '@Html.Raw(Model.TPho)';

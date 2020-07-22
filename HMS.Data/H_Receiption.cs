@@ -62,7 +62,7 @@ namespace HMS.Data
         public virtual H_NhanVien H_NhanVien4 { get; set; }
         public virtual ICollection<H_Receipt_DichVu> H_Receipt_DichVu { get; set; }
         public virtual ICollection<H_Receipt_PT> H_Receipt_PT { get; set; }
-        public virtual H_SellReceipt H_SellReceipt { get; set; }
         public virtual H_WorkType H_WorkType { get; set; }
+        public virtual H_SellReceipt H_SellReceipt { get; set; }
     }
 }

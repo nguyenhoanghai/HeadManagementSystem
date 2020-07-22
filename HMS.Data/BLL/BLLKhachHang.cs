@@ -57,7 +57,7 @@ namespace HMS.Data.BLL
             }
         }
 
-        public  KhachHangModel  Get(string connectString,int Id)
+        public KhachHangModel Get(string connectString, int Id)
         {
             using (var db = new HMSEntities(connectString))
             {
@@ -150,6 +150,205 @@ namespace HMS.Data.BLL
                 }
             }
         }
+
+        /// <summary>
+        /// tìm xe theo số xe,số máy or số khung
+        /// </summary>
+        /// <param name="connectString"></param>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public KhachHangModel FindSoKhungOrSoMayOrBSo(string connectString, string keyword)
+        {
+            using (var db = new HMSEntities(connectString))
+            {
+                try
+                {
+                    var kh = (from x in db.H_Receiption
+                              where
+                              !x.IsDeleted &&
+                              !x.H_KhachHang.IsDeleted &&
+                             (x.LicenseNumber.Trim().ToUpper() == keyword.Trim().ToUpper() ||
+                             x.MachineNumber.Trim().ToUpper() == keyword.Trim().ToUpper() ||
+                             x.ChassisNumber.Trim().ToUpper() == keyword.Trim().ToUpper()
+                             )
+                              orderby
+                              x.CreatedDate descending
+                              select new KhachHangModel()
+                              {
+                                  Id = x.H_KhachHang.Id,
+                                  Ma = x.H_KhachHang.Code,
+                                  Ten = x.H_KhachHang.Name,
+                                  NSinh = x.H_KhachHang.Birthday,
+                                  GTinh = x.H_KhachHang.Gender,
+                                  DThoai = x.H_KhachHang.Phone,
+                                  DChi = x.H_KhachHang.Address,
+                                  TPho = x.H_KhachHang.City,
+                                  Huyen = x.H_KhachHang.District,
+                                  Phuong = x.H_KhachHang.Wards,
+                                  Note = x.H_KhachHang.Note,
+                                  NNghiep = (x.H_KhachHang.H_NgheNghiep != null ? x.H_KhachHang.H_NgheNghiep.Code : ""),
+                                  JobId = x.H_KhachHang.JobId,
+
+                                  strModel = x.H_Model.Note,
+                                  SoMay = x.MachineNumber,
+                                  SoSuon = x.ChassisNumber,
+                                  BienSo = x.LicenseNumber,
+                                  ModelId = x.ModelId,
+                                  Loaixe = x.WorkTypeId,
+                                  NgayMua = x.CreatedDate,
+                                  Km = x.New_Km,
+                                  XeId = x.SellReceiptId,
+                                  NgayTao = x.Date
+                              }).FirstOrDefault();
+
+                    if (kh == null)
+                        kh = (from x in db.H_SellReceipt
+                              where
+                              !x.IsDeleted &&
+                              !x.H_KhachHang.IsDeleted &&
+                              (x.LicenseNumber.Trim().ToUpper() == keyword.Trim().ToUpper() ||
+                           x.MachineNumber.Trim().ToUpper() == keyword.Trim().ToUpper() ||
+                           x.ChassisNumber.Trim().ToUpper() == keyword.Trim().ToUpper())
+                              orderby
+                              x.CreatedDate descending
+                              select new KhachHangModel()
+                              {
+                                  Id = x.H_KhachHang.Id,
+                                  Ma = x.H_KhachHang.Code,
+                                  Ten = x.H_KhachHang.Name,
+                                  NSinh = x.H_KhachHang.Birthday,
+                                  GTinh = x.H_KhachHang.Gender,
+                                  DThoai = x.H_KhachHang.Phone,
+                                  DChi = x.H_KhachHang.Address,
+                                  TPho = x.H_KhachHang.City,
+                                  Huyen = x.H_KhachHang.District,
+                                  Phuong = x.H_KhachHang.Wards,
+                                  Note = x.H_KhachHang.Note,
+                                  NNghiep = (x.H_KhachHang.H_NgheNghiep != null ? x.H_KhachHang.H_NgheNghiep.Code : ""),
+                                  JobId = x.H_KhachHang.JobId,
+
+                                  strModel = x.H_Model.Note,
+                                  SoMay = x.MachineNumber,
+                                  SoSuon = x.ChassisNumber,
+                                  BienSo = x.LicenseNumber,
+                                  ModelId = x.ModelId,
+                                  Loaixe = x.WorkTypeId,
+                                  NgayMua = x.CreatedDate,
+                                  Km = 0,
+                                  XeId = x.Id,
+
+                                  NgayTao = x.CreatedDate
+                              }).FirstOrDefault();
+                    return kh;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
+        public List<ModelSelectItem> GetAllbikes(string connectString, int khId)
+        {
+            using (var db = new HMSEntities(connectString))
+            {
+                try
+                {
+                    var list = new List<ModelSelectItem>();
+                    var xes = (from x in db.H_SellReceipt
+                               where !x.IsDeleted && !x.H_KhachHang.IsDeleted && x.KHId == khId
+                               orderby x.CreatedDate descending
+                               select new
+                               {
+                                   Id = x.Id,
+                                   Code = x.SoPhieu,
+                                   Name = x.H_Model.Note,
+                                   Data1 = x.MachineNumber,
+                                   Data2 = x.ChassisNumber,
+                                   Data3 = x.LicenseNumber,
+                                   Data = x.ModelId,
+                                   Record = x.WorkTypeId,
+                                   Data4 = x.CreatedDate,
+                                   Gia = x.Price,
+                                   CKhau = x.Discount,
+                                   Tong = x.Total
+                               }).ToList();
+                    if (xes.Count > 0)
+                    {
+                        for (int i = 0; i < xes.Count; i++)
+                        {
+                            var obj = new ModelSelectItem();
+                            Parse.CopyObject(xes[i], ref obj);
+                            obj.Data4 = xes[i].Data4.ToString("dd/MM/yyyy");
+                            obj._double = xes[i].Tong;
+                            obj._double1 = xes[i].Gia;
+                            obj._double2 = xes[i].CKhau;
+                            list.Add(obj);
+                        }
+                    }
+                    return list;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public List<ModelSelectItem> GetAllDVs(string connectString, int khId)
+        {
+            using (var db = new HMSEntities(connectString))
+            {
+                try
+                {
+                    var list = new List<ModelSelectItem>();
+                    var xes = (from x in db.H_Receiption
+                               where !x.IsDeleted && !x.H_KhachHang.IsDeleted && x.KHId == khId
+                               orderby x.CreatedDate descending
+                               select new
+                               {
+                                   Id = x.Id,
+                                   Code = x.Code,
+                                   Name = x.H_Model.Note,
+                                   Data1 = x.MachineNumber,
+                                   Data2 = x.ChassisNumber,
+                                   Data3 = x.LicenseNumber,
+                                   Data = x.ModelId,
+                                   Record = x.WorkTypeId,
+                                   Data4 = x.CreatedDate,
+                                   Data5 = x.ClosedDate,
+                                   TongPT = x.Total_PTung,
+                                   TongDV = x.Total_Cong,
+                                   Tong = x.Total
+                               }).ToList();
+                    if (xes.Count > 0)
+                    {
+                        for (int i = 0; i < xes.Count; i++)
+                        {
+                            var obj = new ModelSelectItem();
+                            Parse.CopyObject(xes[i], ref obj);
+                            obj.Data4 = xes[i].Data4.ToString("dd/MM/yyyy HH:mm");
+                            obj.Data5 = "";
+                            if (xes[i].Data5.HasValue)
+                            {
+                                obj.Data5 = xes[i].Data5.Value.ToString("dd/MM/yyyy HH:mm");
+                            }
+                            obj._double = xes[i].Tong;
+                            obj._double1 = xes[i].TongPT;
+                            obj._double2 = xes[i].TongDV;
+                            list.Add(obj);
+                        }
+                    }
+                    return list;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
 
         public List<ModelSelectItem> GetLookUp(string connectString, int loaiNV)
         {

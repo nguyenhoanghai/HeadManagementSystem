@@ -40,7 +40,7 @@ namespace HMS.Data
         public virtual H_KhachHang H_KhachHang { get; set; }
         public virtual H_Model H_Model { get; set; }
         public virtual H_NhanVien H_NhanVien { get; set; }
-        public virtual H_WorkType H_WorkType { get; set; }
         public virtual ICollection<H_Receiption> H_Receiption { get; set; }
+        public virtual H_WorkType H_WorkType { get; set; }
     }
 }

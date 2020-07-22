@@ -24,14 +24,9 @@
         <AssociationConnector Association="HMSModel.FK_H_KhachHang_H_NgheNghiep" />
         <AssociationConnector Association="HMSModel.FK_H_NhanVien_H_LoaiNhanVien" />
         <AssociationConnector Association="HMSModel.FK_H_Receipt_PT_H_PhuTung" />
-        <EntityTypeShape EntityType="HMSModel.H_SellReceipt" Width="1.5" PointX="11.25" PointY="13.875" />
-        <AssociationConnector Association="HMSModel.FK_H_SellReceipt_H_KhachHang" />
-        <AssociationConnector Association="HMSModel.FK_H_SellReceipt_H_Model" />
-        <AssociationConnector Association="HMSModel.FK_H_SellReceipt_H_NhanVien" />
-        <AssociationConnector Association="HMSModel.FK_H_SellReceipt_H_WorkType" />
         <EntityTypeShape EntityType="HMSModel.H_NhapPT" Width="1.5" PointX="13.5" PointY="4.375" />
         <AssociationConnector Association="HMSModel.FK_H_NhapPT_H_PhuTung" />
-        <EntityTypeShape EntityType="HMSModel.H_Receiption" Width="1.5" PointX="16.5" PointY="7.875" />
+        <EntityTypeShape EntityType="HMSModel.H_Receiption" Width="1.5" PointX="10.5" PointY="13.875" />
         <AssociationConnector Association="HMSModel.FK_H_Receiption_H_KhachHang" />
         <AssociationConnector Association="HMSModel.FK_H_Receiption_H_Model" />
         <AssociationConnector Association="HMSModel.FK_H_Receiption_H_NhanVien" />
@@ -41,8 +36,13 @@
         <AssociationConnector Association="HMSModel.FK_H_Receiption_H_NhanVien4" />
         <AssociationConnector Association="HMSModel.FK_H_Receipt_Work_H_Receiption" />
         <AssociationConnector Association="HMSModel.FK_H_Receipt_PT_H_Receipt" />
-        <AssociationConnector Association="HMSModel.FK_H_Receiption_H_SellReceipt" />
         <AssociationConnector Association="HMSModel.FK_H_Receiption_H_WorkType" />
+        <EntityTypeShape EntityType="HMSModel.H_SellReceipt" Width="1.5" PointX="8.25" PointY="9.875" />
+        <AssociationConnector Association="HMSModel.FK_H_SellReceipt_H_KhachHang" />
+        <AssociationConnector Association="HMSModel.FK_H_SellReceipt_H_Model" />
+        <AssociationConnector Association="HMSModel.FK_H_SellReceipt_H_NhanVien" />
+        <AssociationConnector Association="HMSModel.FK_H_Receiption_H_SellReceipt" />
+        <AssociationConnector Association="HMSModel.FK_H_SellReceipt_H_WorkType" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

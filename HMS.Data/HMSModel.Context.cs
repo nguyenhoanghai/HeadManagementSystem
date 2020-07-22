@@ -37,8 +37,8 @@ namespace HMS.Data
         public DbSet<H_Receipt_PT> H_Receipt_PT { get; set; }
         public DbSet<H_Work> H_Work { get; set; }
         public DbSet<H_WorkType> H_WorkType { get; set; }
-        public DbSet<H_SellReceipt> H_SellReceipt { get; set; }
         public DbSet<H_NhapPT> H_NhapPT { get; set; }
         public DbSet<H_Receiption> H_Receiption { get; set; }
+        public DbSet<H_SellReceipt> H_SellReceipt { get; set; }
     }
 }

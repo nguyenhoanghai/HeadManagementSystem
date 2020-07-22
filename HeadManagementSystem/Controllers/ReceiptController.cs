@@ -23,7 +23,7 @@ namespace HeadManagementSystem.Controllers
         }
 
         #region Create
-        public ActionResult Create(string ma)
+        public ActionResult Create(string keyword)
         {
             string connnect = App_Global.AppGlobal.Connectionstring;
             ViewBag.Jobs = BLLJob.Instance.GetLookUp(connnect);
@@ -33,14 +33,14 @@ namespace HeadManagementSystem.Controllers
             dichVuModel.Ngay = DateTime.Now;
             int index = BLLReceipt.Instance.GetLastInDay(connnect, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
             dichVuModel.SoPhieu = "DV-" + DateTime.Now.ToString("ddMMyy") + "-" + Helper.GPRO_Helper.Instance.getNumber(index);
-            dichVuModel.Index = index;
-            dichVuModel.Ma = ma;
-            if (!string.IsNullOrEmpty(ma))
+            dichVuModel.Index = index; 
+            if (!string.IsNullOrEmpty(keyword))
             {               
-                var kh = BLLKhachHang.Instance.GetByCode(connnect, ma);
+                var kh = BLLKhachHang.Instance.FindSoKhungOrSoMayOrBSo(connnect, keyword);
                 if (kh != null)
                 {
-                    dichVuModel.Id = kh.Id;
+                    dichVuModel.Id = kh.Id; 
+                    dichVuModel.Ma = kh.Ma;
                     dichVuModel.Ten = kh.Ten;
                     dichVuModel.GTinh = kh.GTinh;
                     dichVuModel.NSinh = kh.NSinh;
@@ -52,9 +52,15 @@ namespace HeadManagementSystem.Controllers
                     dichVuModel.Note = kh.Note;
                     dichVuModel.JobId = kh.JobId;
                     dichVuModel.Xes = kh.Xes; 
+                    dichVuModel.XeId = kh.XeId.HasValue?kh.XeId.Value : 0; 
+                    dichVuModel.SoMay = kh.SoMay; 
+                    dichVuModel.SoKhung = kh.SoSuon; 
+                    dichVuModel.BienSo = kh.BienSo;
+                    dichVuModel.ModelId = kh.ModelId;
+                    dichVuModel.WTypeId = kh.Loaixe;
                 }
                 else
-                    ViewBag.alert = "Không tìm thấy thông tin khách hàng trong hệ thống.";
+                    ViewBag.alert = "Không tìm thấy xe có biển số hoặc số khung hoặc số máy khớp với từ khóa bạn cần tìm trong hệ thống.";
             }
             return View(dichVuModel);
         }
