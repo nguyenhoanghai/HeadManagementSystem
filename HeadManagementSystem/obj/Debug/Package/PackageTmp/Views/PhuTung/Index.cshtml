@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Phụ tùng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="header bg-teal">
+        <div class="row clearfix">
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="upper-text">danh mục phụ tùng</h2>
+            </div>
+        </div>
+    </div>
+    <div class="body clearfix ">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 m-b-10 padding-0">
+            <div class="add-box-title">Thông tin phụ tùng</div>
+            <div class="add-box-body">
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" id="code" />
+                            <label class="form-label">Mã phụ tùng</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" id="name" />
+                            <label class="form-label">Tên phụ tùng</label>
+                        </div>
+                        <div class="err-name"></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="number" class="form-control" id="soluong" />
+                            <label class="form-label">Số lượng</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="number" class="form-control  " id="giamua" />
+                            <label class="form-label">Giá mua</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="number" class="form-control" id="giaban" />
+                            <label class="form-label">Giá bán</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <textarea rows="1" class="form-control no-resize auto-growth" id="note"></textarea>
+                            <label class="form-label">Ghi chú</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
+                    <button class="btn btn-danger m-b-5 m-t-5" id="btAdd"><i class="fa fa-plus-circle"></i> Thêm mới</button>
+                    <button class="btn btn-primary m-b-5 m-t-5" id="btSave"><i class="fa fa-save"></i> Cập nhật</button>
+                    <button class="btn btn-default m-b-5 m-t-5" id="btCancel"><i class="fa fa-ban col-red"></i> Hủy bỏ</button>
+                </div>
+                <div class="line"></div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
+
+                    <button class="btn btn-primary m-b-5 m-t-5" id="btnhap-excel"><i class="fa fa-file-excel-o"></i> Nhập phụ tùng từ file excel</button><br />
+                    <input type="file" style="display:none" name="filemau" id="file-mau" />
+                    <a href="/Excel_Template/nhap-phu-tung.xlsx">Tải file mẫu</a>
+                    <br />
+                    <span class="err-msg up-err"></span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 m-b-10 padding-0">
+            <div class="grid-box-title">Danh sách phụ tùng</div>
+            <div class="grid-box-body">
+                <div class="table-responsive">
+                    <table id="phutung-table" class="table table-bordered table-striped table-hover dataTable phutung-table">  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/HMS/phu-tung-index.js"></script>
+<script>
+    var phutung = new HMS.PhuTung();
+    phutung.Init();
+
+    function Edit(id) {
+        phutung.Edit(id);
+    }
+
+    function Delete(id) {
+        phutung.Delete(id);
+    }
+</script>

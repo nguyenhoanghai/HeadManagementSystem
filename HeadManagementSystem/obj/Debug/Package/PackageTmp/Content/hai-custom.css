@@ -1,0 +1,291 @@
+﻿.dropdown-menu > li > form > a {
+    padding: 7px 18px;
+    color: #666;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+    .dropdown-menu > li > form > a i.material-icons {
+        float: left;
+        margin-right: 7px;
+        margin-top: 2px;
+        font-size: 20px;
+    }
+
+.sidebar {
+    width: 200px
+}
+
+.container-fluid {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+section.content {
+    margin: 80px 10px 0 205px;
+}
+
+.slimScrollBar {
+    width: 7px !important
+}
+
+.block-header {
+    margin-bottom: 7px;
+}
+
+.card .header {
+    padding: 10px 20px;
+}
+
+    .card .header .col-xs-12 h2 {
+        margin-top: 0px;
+    }
+
+    .card .header h2 {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+.menu span {
+    text-transform: uppercase
+}
+
+.sidebar .menu .list a {
+    padding: 7px 13px;
+}
+
+    .sidebar .menu .list a span {
+        margin: 0px 0 0px 5px;
+        font-size: 12px;
+    }
+
+.sidebar .menu .list i.material-icons {
+    font-size: 15px;
+    margin-top: 0
+}
+
+.sidebar .menu .list .header {
+    border-bottom: 2px solid #009688;
+}
+
+.table-bordered thead tr th {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.table-bordered tbody tr td {
+    font-size: 12px;
+}
+
+.dataTables_wrapper .row .col-sm-6,
+.dataTables_wrapper .row .col-sm-12 {
+    margin-bottom: 0
+}
+
+.dataTables_length .bootstrap-select {
+    width: 50px !important;
+}
+
+.dataTables_length .dropdown-toggle {
+    width: 50px;
+    margin: 0;
+    padding: 6px 0 0 0;
+    font-weight: 600;
+    color: red;
+}
+
+.btn-table-search-range {
+    margin: -25px 5px 0 10px;
+}
+
+.input-daterange .form-line {
+    width: 90px !important
+}
+
+    .input-daterange .form-line input {
+        width: 100% !important
+    }
+
+.pointer {
+    cursor: pointer !important
+}
+
+    .pointer:active {
+        color: blue !important
+    }
+
+.dataTables_filter input[type="search"] {
+    margin-right: 10px !important
+}
+
+.dataTables_length {
+    margin-top: 5px !important
+}
+
+.form-group {
+    margin-bottom: 5px !important;
+}
+
+    .form-group .form-line.focused .form-label {
+        color: #009688;
+        font-weight: 600;
+        z-index: 1
+    }
+
+    .form-group .form-line:after {
+        border-bottom-color: #009688
+    }
+
+    .form-group .form-control {
+        min-height: 34px
+    }
+
+.bootstrap-select .dropdown-toggle {
+    padding: 0;
+    margin-top: 10px;
+}
+
+.bootstrap-select .dropdown-menu {
+    margin-top: 0px !important;
+    padding: 0px 0px 0px 33px !important;
+}
+
+    .bootstrap-select .dropdown-menu .bs-searchbox input[type="text"] {
+        padding-left: 10px;
+    }
+
+.btn:not(.btn-link):not(.btn-circle) i {
+    top: 1px !important;
+}
+
+.table-edit-delete-col {
+    width: 30px;
+    text-align: center
+}
+
+.table.dataTable {
+    width: 100% !important
+}
+
+.err-msg {
+    color: red;
+    font-size: 11px;
+    font-weight: 500;
+    padding-top:3px
+}
+
+.form-group .error {
+    border-color: #F44336
+}
+
+.add-box-title,
+.grid-box-title {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-bottom: 2px solid #009688;
+    color: #009688;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.add-box-body,
+.grid-box-body {
+    padding: 20px 10px 0 10px;
+    border: 1px solid #ccc;
+    border-top: none
+}
+
+.grid-box-body {
+    padding: 10px;
+}
+
+.upper-text {
+    text-transform: uppercase !important
+}
+
+.fake-input {
+    line-height: 28px;
+    margin-bottom: 0
+}
+
+.line {
+    border: 1px solid #009688 !important;
+    clear: both;
+    margin-bottom:10px
+}
+
+.disabled,
+.disabled .filter-option,
+.disabled .dropdown-toggle {
+    background: #eee
+}
+
+    .disabled .dropdown-toggle {
+        margin-top: 8px !important;
+    }
+
+    .disabled .bs-caret {
+        display: none
+    }
+
+.btn:not(.btn-link):not(.btn-circle) span {
+    margin-left: 0 !important;
+    top: 0 !important
+}
+
+.label-select {
+    left: 0;
+    font-size: 12px;
+    color: #009688;
+    font-weight: 600;
+    z-index: 1;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+}
+
+.form-select {
+    margin-top: -16px !important
+}
+
+    .form-select .bootstrap-select {
+        margin-top: -7px;
+        border-bottom: 2px solid #009688 !important
+    }
+
+.bold {
+    font-weight: bold !important
+}
+
+.p-r-0 {
+    padding-right: 0 !important
+}
+
+.p-l-0 {
+    padding-left: 0 !important
+}
+
+.p-r-5 {
+    padding-right: 5px !important
+}
+
+.p-l-5 {
+    padding-left: 5px !important
+}
+
+.m-b-0 {
+    margin-bottom: 0 !important
+}
+
+.m-b-10 {
+    margin-bottom: 10px !important
+}
+
+.table-responsive{
+    min-height:350px
+}

@@ -1,0 +1,125 @@
+﻿@using HeadManagementSystem.Constant.Authentication
+@{
+    var member = AuthenticationHelper<BaseLoginInformation>.UserData;
+}
+<!-- User Info -->
+<div class="user-info">
+    <div class="image">
+        <img src="/UploadedFiles/@member.Avatar" width="70" height="70" alt="User" />
+    </div>
+    <div class="info-container">
+        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@member.LoginName</div>
+        <div class="email">@member.FullName</div>
+        <div class="btn-group user-helper-dropdown">
+            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+            <ul class="dropdown-menu pull-right">
+                <li><a href="/access/profile"><i class="material-icons">person</i>Profile</a></li>
+                <li role="separator" class="divider"></li> 
+                <li>
+                    @using (Html.BeginForm("SignOut", "Access", FormMethod.Post, new { id = "logoutForm", @class = "" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a href="javascript:document.getElementById('logoutForm').submit()"><i class="material-icons">input</i>Sign Out</a>
+                    }
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- #User Info -->
+<!-- Menu -->
+<div class="menu">
+    <ul class="list">
+        <li class="header">BÁN HÀNG</li>
+        <li class="">
+            <a href="/banhang/create">
+                <i class="material-icons col-blue">note_add</i>
+                <span>tạo phiếu</span>
+            </a>
+        </li>
+        <li>
+            <a href="/banhang/index">
+                <i class="material-icons">people</i>
+                <span>Khách hàng</span>
+            </a>
+        </li>
+
+        <li class="header">DỊCH VỤ</li>
+        <li>
+            <a href="/receipt/Create">
+                <i class="material-icons col-blue">note_add</i>
+                <span>tạo phiếu</span>
+            </a>
+        </li>
+        <li>
+            <a href="/receipt/phieumo">
+                <i class="material-icons col-pink">assignment</i>
+                <span>phiếu mở</span>
+            </a>
+        </li>
+        <li>
+            <a href="/receipt/phieudong">
+                <i class="material-icons">assignment</i>
+                <span>phiếu đóng</span>
+            </a>
+        </li>
+        <li class="header upper-text">DANH MỤC quản trị</li>
+        <li class="">
+            <a href="/usertype/index">
+                <i class="material-icons col-blue">group</i>
+                <span>loại nhân viên</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="/user/index">
+                <i class="material-icons col-blue">group</i>
+                <span>nhân viên</span>
+            </a>
+        </li>
+        <li class="header upper-text">danh mục</li>
+        <li class="">
+            <a href="/model/index">
+                <i class="material-icons col-blue">person_add</i>
+                <span>Model xe</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="/phutung/index">
+                <i class="material-icons col-blue">group</i>
+                <span>phụ tùng</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="/worktype/index">
+                <i class="material-icons col-blue">group</i>
+                <span>loại công việc</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="/work/index">
+                <i class="material-icons col-blue">group</i>
+                <span>công việc</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="/dichvu/index">
+                <i class="material-icons col-blue">group</i>
+                <span>dịch vụ</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="/khachhang/index">
+                <i class="material-icons col-blue">group</i>
+                <span>khách hàng</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="/job/index">
+                <i class="material-icons col-blue">group</i>
+                <span>nghề nghiệp</span>
+            </a>
+        </li>
+         
+    </ul>
+</div>
+<!-- #Menu -->

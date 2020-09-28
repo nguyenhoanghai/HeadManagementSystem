@@ -1,0 +1,74 @@
+﻿@using HMS.Data.Model
+@{
+    ViewBag.Title = "Cấu hình kết nối dữ liệu";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div class="card ">
+        <div class="header bg-teal">
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-6">
+                    <h2>Cấu hình kết nối cơ sở dữ liệu</h2>
+                </div>
+            </div>
+        </div>
+        <div class="body clearfix ">
+            <div class="col-xs-12 col-sm-3 col-md-12 col-lg-12">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" class="form-control" id="sname">
+                        <label class="form-label">Tên máy chủ</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-12 col-lg-12">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" class="form-control" id="lg">
+                        <label class="form-label">Tài khoản</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-12 col-lg-12">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" class="form-control" id="ps">
+                        <label class="form-label">Mật khẩu</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-12 col-lg-12">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <label>
+                            <input type="checkbox" id="ck_authen" class="filled-in" />
+                            <label for="basic_checkbox_2">Sử dụng quyền Admin</label>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-12 col-lg-12">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <select class="form-control show-tick" data-live-search="true" id="database"></select>
+                        <label class="form-label">Cơ sở dữ liệu</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12 align-right">
+                <button class="btn btn-danger m-b-5 m-t-5" id="refresh-sql"><i class="fa fa-plus-circle"></i> Làm mới CSDL</button>
+                <button class="btn btn-primary m-b-5 m-t-5" id="save-sql"><i class="fa fa-save"></i> Lưu lại</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/HMS/sql-index.js"></script>
+<script>
+   // $(document).ready(function () {
+        var sql = new HMS.SQLConnect();
+        sql.Init();
+   // });
+</script>

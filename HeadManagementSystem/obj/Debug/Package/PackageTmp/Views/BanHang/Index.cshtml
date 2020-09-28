@@ -1,0 +1,77 @@
+﻿@model List<HMS.Data.Model.SellReceiptModel>
+@{
+    ViewBag.Title = "Bán hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="header bg-teal">
+                <div class="row clearfix">
+                    <div class="col-xs-12 col-sm-6">
+                        <h2>Phiếu bán hàng từ @ViewBag.info | <span class="col-yellow bold">@Model.Count</span> phiếu</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="body  " >
+                <div class="table-responsive">
+                    <table id="table-phieu-ban-hang" class="table table-bordered table-striped table-hover dataTable ">
+                        <thead>
+                            <tr>
+                                <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Số phiếu</th>
+                                <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">nhân viên tư vấn</th>
+                                <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Thông tin khách hàng</th>
+                                <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Thông tin xe</th>
+                                <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Giá bán</th>
+                                <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Chiết khấu</th>
+                                <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">thành tiền</th>
+                                <th class="col-md-3 col-xs-3 col-sm-3 col-lg-3">Ghi chú</th>
+                                <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ngày tạo phiếu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="/banhang/edit?id=@item.Id"> @item.SoPhieu</a>
+                                        <button class="btn-primary"><i class="fa fa-print"></i> In phiếu</button>
+                                    </td>
+                                    <td>
+                                        <div>@item.MaTuVan</div>
+                                        <div>@item.TenTuVan</div>
+                                    </td>
+                                    <td>
+                                        <div><a href="/Receipt/edit?id=@item.KHId"> @item.MaKH</a></div>
+                                        <div>@item.Ten</div>
+                                        <div>@item.DThoai</div>
+                                    </td>
+                                    <td>
+                                        <div>@item.Model</div>
+                                        <div>@item.SoKhung</div>
+                                        <div>@item.SoMay</div>
+                                        <div>@item.BienSo</div>
+                                    </td>
+                                    <td>@item.GiaBan</td>
+                                    <td>@(item.ChietKhau)%</td>
+                                    <td>@item.ThanhTien</td>
+                                    <td>@item.GhiChu</td>
+                                    <td>@item.Ngay.ToString("dd/MM/yyyy h:mm tt")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    createDatatable('table-phieu-ban-hang', true, false);
+
+    $('#table-phieu-ban-hang_wrapper .btn-table-search-range').click(() => {
+        window.location.href = ('/banhang/index?from=' + $('#table-phieu-ban-hang_wrapper .from-date').val() + '&to='+ $('#table-phieu-ban-hang_wrapper .to-date').val());
+    });
+</script>
+

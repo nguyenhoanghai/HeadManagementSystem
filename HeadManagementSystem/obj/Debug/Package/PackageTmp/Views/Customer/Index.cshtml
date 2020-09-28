@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Khách hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>DASHBOARD</h2>
+    </div>
+    <!-- CPU Usage -->
+    <div class="row clearfix">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header bg-teal">
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-6">
+                            <h2>Khách hàng</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="body  ">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tab-col-pink" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#home_with_icon_title" data-toggle="tab">
+                                <i class="material-icons">view_list</i> Tất cả khách hàng (30)
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#profile_with_icon_title" data-toggle="tab">
+                                <i class="material-icons">view_list</i> Khách hàng dịch vụ (10)
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#messages_with_icon_title" data-toggle="tab">
+                                <i class="material-icons">view_list</i> Khách hàng mua xe (20)
+                            </a>
+                        </li> 
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="home_with_icon_title">
+                            <div class="table-responsive">
+                                <table id="js-customer-index" class="table table-bordered table-striped table-hover dataTable basic-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ngày nhập</th>
+                                            <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Mã khách hàng</th>
+                                            <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Tên khách hàng</th>
+                                            <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Địa chỉ</th>
+                                            <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Thông tin khách hàng</th>
+                                            <th class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Thông tin xe</th>
+                                            <th class="col-md-1 col-xs-2 col-sm-2 col-lg-2">Thông tin dịch vụ</th>
+                                            <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ngày cuối mua xe</th>
+                                            <th class="col-md-1 col-xs-1 col-sm-1 col-lg-1">Ghi chú</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int i = 0; i < 100; i++)
+                                        {
+                                            <tr>
+                                                <td>@DateTime.Now.ToShortDateString()</td>
+                                                <td>0907547022</td>
+                                                <td>Lâm thị bé tư</td>
+                                                <td>
+                                                    <div>Phạm ngũ lão,p3 ,quận 4, TP HCM</div>
+                                                    <div>11</div>
+                                                    <div>Q Gò vấp</div>
+                                                    <div>Hồ chí Minh</div>
+                                                </td>
+                                                <td>
+                                                    <div><span class="col-pink">Điện thoại:</span><span> 0907547022</span></div>
+                                                    <div><span class="col-pink">Ngày sinh:</span><span> @DateTime.Now.ToShortDateString()</span></div>
+                                                </td>
+                                                <td>
+                                                    <div><span class="col-pink">Xe đã mua:</span><span> 1</span></div>
+                                                    <div><span class="col-pink">Tổng tiền:</span><span> 65.000.000</span></div>
+                                                </td>
+                                                <td>
+                                                    <div><span class="col-pink">Số lượng phiếu:</span><span> 1</span></div>
+                                                    <div><span class="col-pink">Tổng tiền:</span><span> 650.000</span></div>
+                                                </td>
+                                                <td>
+                                                    <span class="bg-cyan" style="padding:3px 5px">@DateTime.Now.ToShortDateString()</span>
+                                                </td>
+                                                <td>empty</td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="profile_with_icon_title">
+                            <b>Profile Content</b>
+                            <p>
+                                Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
+                                Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
+                                pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
+                                sadipscing mel.
+                            </p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="messages_with_icon_title">
+                            <b>Message Content</b>
+                            <p>
+                                Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
+                                Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
+                                pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
+                                sadipscing mel.
+                            </p>
+                        </div>                        
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# CPU Usage -->
+</div>
+
